@@ -1,0 +1,94 @@
+package com.sadgel;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+
+/**
+ * Created by User15 on 30.05.2017.
+ */
+public class SB_menu {
+
+    public static MainWindow bw;
+    //public static JButton[] menu_but;
+
+    public static void set_butt(MainWindow baseWin) {
+
+        bw = baseWin;
+
+        bw.menu_but = new JButton[3];
+
+        JButton newGameButton = new JButton();
+        baseWin.setLayout(null);
+        newGameButton.setSize(100, 20);
+        newGameButton.setLocation(70, 300);
+        newGameButton.setText("New game");
+        ActionListener actionListener = new NewGameActionListener();
+        newGameButton.addActionListener(actionListener);
+        baseWin.getContentPane().add(newGameButton);
+        bw.menu_but[0] = newGameButton;
+
+        JButton setShipsButton = new JButton();
+        baseWin.setLayout(null);
+        setShipsButton.setSize(100, 20);
+        setShipsButton.setLocation(70, 230);
+        setShipsButton.setText("Set random");
+        ActionListener actionListenerSet = new SetActionListener();
+        setShipsButton.addActionListener(actionListenerSet);
+        baseWin.getContentPane().add(setShipsButton);
+        bw.menu_but[1] = setShipsButton;
+
+        JButton StartButton = new JButton();
+        baseWin.setLayout(null);
+        StartButton.setSize(100, 20);
+        StartButton.setLocation(70, 251);
+        StartButton.setText("Start");
+        ActionListener actionListenerStart = new StartActionListener();
+        StartButton.addActionListener(actionListenerStart);
+        baseWin.getContentPane().add(StartButton);
+        bw.menu_but[2] = StartButton;
+
+
+    }
+
+    public static class SetActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Set_ships.setAllShips(bw.bf1);
+            Set_ships.setAllShips(bw.bf2);
+
+        }
+    }
+
+    public static class NewGameActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+                SB_web.newGame(bw);
+
+            }catch(MalformedURLException e1) {
+                System.out.println(e1);
+            }
+
+        }
+    }
+
+    public static class StartActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+            bw.setGameBegin(true);
+            Set_buttHide(bw,true);
+
+
+        }
+    }
+
+    public static void Set_buttHide(MainWindow baseWin, boolean hide) {
+        for (int i=0;i<=2;i++) {
+            //baseWin.menu_but[i].setEnabled(false);
+            //baseWin.menu_but[i].setEnabled(false);
+            // baseWin.menu_but[i].setVisible(!hide);
+        }
+
+    }
+}
