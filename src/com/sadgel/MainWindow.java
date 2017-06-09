@@ -14,6 +14,11 @@ public class MainWindow extends JFrame {
     public Bat_Field bf2;
     public JButton [] menu_but;
     private boolean isGameBegin = false;
+    private boolean ourTern;
+
+    public void setOurTern(boolean ourTern) {
+        this.ourTern = ourTern;
+    }
 
     public void setGameBegin(boolean gameBegin) {
         isGameBegin = gameBegin;
@@ -22,14 +27,14 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
 
-        super("Морской бой 1.9");
+        super("Морской бой 2.1");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
 
 
        // super.addMouseWheelListener(new EventLis());
 
-        SB_menu.set_butt(this);
+        SB_menu.set_butt(this, 20, 300);
 
 
     }

@@ -13,7 +13,7 @@ public class SB_menu {
     public static MainWindow bw;
     //public static JButton[] menu_but;
 
-    public static void set_butt(MainWindow baseWin) {
+    public static void set_butt(MainWindow baseWin,int x,int y) {
 
         bw = baseWin;
 
@@ -22,7 +22,7 @@ public class SB_menu {
         JButton newGameButton = new JButton();
         baseWin.setLayout(null);
         newGameButton.setSize(100, 20);
-        newGameButton.setLocation(70, 300);
+        newGameButton.setLocation(x, y + 40);
         newGameButton.setText("New game");
         ActionListener actionListener = new NewGameActionListener();
         newGameButton.addActionListener(actionListener);
@@ -32,7 +32,7 @@ public class SB_menu {
         JButton setShipsButton = new JButton();
         baseWin.setLayout(null);
         setShipsButton.setSize(100, 20);
-        setShipsButton.setLocation(70, 230);
+        setShipsButton.setLocation(x, y);
         setShipsButton.setText("Set random");
         ActionListener actionListenerSet = new SetActionListener();
         setShipsButton.addActionListener(actionListenerSet);
@@ -42,7 +42,7 @@ public class SB_menu {
         JButton StartButton = new JButton();
         baseWin.setLayout(null);
         StartButton.setSize(100, 20);
-        StartButton.setLocation(70, 251);
+        StartButton.setLocation(x, y+20);
         StartButton.setText("Start");
         ActionListener actionListenerStart = new StartActionListener();
         StartButton.addActionListener(actionListenerStart);

@@ -12,9 +12,9 @@ public class SB_gen {
         MainWindow baseWin = new MainWindow();
 
 
-        Bat_Field bf1 = new Bat_Field(0, 0, baseWin, true);
+        Bat_Field bf1 = new Bat_Field(0, 40, baseWin, true);
 
-        Bat_Field bf2 = new Bat_Field(230, 0, baseWin, false);
+        Bat_Field bf2 = new Bat_Field(230, 40, baseWin, false);
 
         baseWin.bf1 = bf1;
         baseWin.bf2 = bf2;

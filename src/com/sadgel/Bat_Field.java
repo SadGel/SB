@@ -73,7 +73,7 @@ public class Bat_Field {
 
 
         JLabel label = new JLabel();
-        label.setLocation(xp + 70, 2);
+        label.setLocation(xp + 100, yp + 2);
         label.setSize(100, 20);
 
         this.label = label;
