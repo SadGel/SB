@@ -15,7 +15,7 @@ public class Bat_cell {
     public Color colorBg;
     public JButton Butt = new JButton();
     private int x, y;
-    public boolean vertal = false;
+    public boolean pressed = false;
 
 
     private boolean isShield = false;
@@ -143,7 +143,11 @@ public class Bat_cell {
     public class CustomListener implements MouseListener {
 
 
+        //public void mouseClicked(MouseEvent e) {
         public void mouseClicked(MouseEvent e) {
+
+            if (pressed) return;
+            if (!bf.bw.isOurTern()) return;
 
             if (bf.isMy) {
                 if (bf.bw.isGameBegin()) {
@@ -179,7 +183,8 @@ public class Bat_cell {
                         //Set_ships.moveShip(Bat_cell.this);
                         //System.out.println("132");
 
-                        SB_battle.setShoot(bf.bw, Bat_cell.this.getX(),Bat_cell.this.getY());
+                        pressed = true;
+                        SB_battle.setShoot(bf.bw, getX(),getY());
 
                     }
 

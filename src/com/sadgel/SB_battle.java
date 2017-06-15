@@ -31,6 +31,8 @@ public class SB_battle {
                 bc.Butt.setBackground(BgSt);
             }
 
+            bc.bf.bw.setOurTern(true);
+
         }
         else {
 
@@ -45,14 +47,21 @@ public class SB_battle {
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
 
+                bc.Butt.setEnabled(false);
                 bc.Butt.repaint();
 
             }
             else {
                 ImageIcon icon = new ImageIcon("dot20.png");
                 bc.Butt.setIcon(icon);
-                bc.Butt.setOpaque(false);
+                bc.Butt.setDisabledIcon(icon);
+
+                bc.Butt.setEnabled(false);
+
+                //bc.Butt.setOpaque(false);
                bc.Butt.repaint();
+
+                bc.bf.bw.setOurTern(false);
 
             }
 
@@ -71,6 +80,13 @@ public class SB_battle {
             shooting(bw.bf1.arOur[x][y], true);
 
         }
+
+
+    }
+
+    public static void enemyTurn(MainWindow bw) {
+
+        setShoot(bw, 5, 5);
 
 
     }

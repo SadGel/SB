@@ -17,7 +17,13 @@ public class MainWindow extends JFrame {
     private boolean ourTern;
 
     public void setOurTern(boolean ourTern) {
+
         this.ourTern = ourTern;
+
+        if (!ourTern) {
+            SB_battle.enemyTurn(this);
+        }
+
     }
 
     public boolean isOurTern() {
