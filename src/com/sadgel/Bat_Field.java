@@ -28,6 +28,8 @@ public class Bat_Field {
 
     public Boolean isMy;
 
+    public MainWindow bw;
+
     public void setX(int x) {
         this.x = x;
     }
@@ -50,7 +52,7 @@ public class Bat_Field {
 
     }
 
-    public Bat_Field(int xp, int yp, JFrame baseWin, boolean isMy) {
+    public Bat_Field(int xp, int yp, MainWindow baseWin, boolean isMy) {
 
         takenShip = new ArrayList<Bat_cell>();
 
@@ -58,6 +60,7 @@ public class Bat_Field {
         this.xp = xp;
         this.yp = yp;
         this.isMy = isMy;
+        this.bw = baseWin;
 
 
         for (int x = 1; x <= 10; x++) {

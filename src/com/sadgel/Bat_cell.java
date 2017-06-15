@@ -12,8 +12,8 @@ import java.util.Set;
  */
 public class Bat_cell {
 
-    private Color colorBg;
-    private JButton newButton = new JButton();
+    public Color colorBg;
+    public JButton Butt = new JButton();
     private int x, y;
     public boolean vertal = false;
 
@@ -35,13 +35,13 @@ public class Bat_cell {
         Color Bg;
 
         MainWindow.setLayout(null);
-        newButton.setSize(20, 20);
-        newButton.setLocation(x * 20 + xp, y * 20 + yp);
-        newButton.addMouseListener(new CustomListener());
+        Butt.setSize(20, 20);
+        Butt.setLocation(x * 20 + xp, y * 20 + yp);
+        Butt.addMouseListener(new CustomListener());
         //newButton.addMouseListener(new EventLis());
         Bg = new Color(255, 255, 255);
         this.colorBg = Bg;
-        newButton.setBackground(colorBg);
+        Butt.setBackground(colorBg);
         this.x = x;
         this.y = y;
         arOur[x][y] = this;
@@ -49,7 +49,10 @@ public class Bat_cell {
         this.bf = bf;
         ship = new HashSet();
 
-        MainWindow.getContentPane().add(newButton);
+        Butt.setFocusPainted(false);
+        //Butt.setFont(new Font("Arial", Font.PLAIN, ));
+
+        MainWindow.getContentPane().add(Butt);
 
 
     }
@@ -106,7 +109,7 @@ public class Bat_cell {
         }
         this.colorBg = Bg;
 
-        newButton.setBackground(colorBg);
+        Butt.setBackground(colorBg);
     }
 
     public void setColorBgOver2(int c, int p, boolean vert, int x, int y) {
@@ -143,21 +146,46 @@ public class Bat_cell {
         public void mouseClicked(MouseEvent e) {
 
             if (bf.isMy) {
+                if (bf.bw.isGameBegin()) {
 
-                JButton button = (JButton) e.getSource();
-                if (e.getButton() == 3) {
-                    if (isDeck()) {
+                }
+                else {
 
-                        //System.out.println(Bat_cell.this.ship.size());
+                    JButton button = (JButton) e.getSource();
+                    if (e.getButton() == 3) {
+                        if (isDeck()) {
 
-                        Set_ships.rotateShip(Bat_cell.this);
+                            //System.out.println(Bat_cell.this.ship.size());
+
+                            Set_ships.rotateShip(Bat_cell.this);
+                        }
+
+                    }
+
+                    if (e.getButton() == 1) {
+
+                        Set_ships.moveShip(Bat_cell.this);
+
                     }
 
                 }
 
-                if (e.getButton() == 1) {
+            }
+            else {
+                if (bf.bw.isGameBegin()) {
 
-                    Set_ships.moveShip(Bat_cell.this);
+                    if (e.getButton() == 1) {
+
+                        //Set_ships.moveShip(Bat_cell.this);
+                        //System.out.println("132");
+
+                        SB_battle.setShoot(bf.bw, Bat_cell.this.getX(),Bat_cell.this.getY());
+
+                    }
+
+                }
+                else {
+
 
                 }
 

@@ -20,10 +20,23 @@ public class MainWindow extends JFrame {
         this.ourTern = ourTern;
     }
 
+    public boolean isOurTern() {
+        return ourTern;
+    }
+
+    public boolean isGameBegin() {
+        return isGameBegin;
+    }
+
     public void setGameBegin(boolean gameBegin) {
         isGameBegin = gameBegin;
+        ourTern = true;
 
     }
+
+
+
+
 
     public MainWindow() {
 

@@ -50,6 +50,8 @@ public class SB_menu {
         bw.menu_but[2] = StartButton;
 
 
+
+
     }
 
     public static class SetActionListener implements ActionListener {
