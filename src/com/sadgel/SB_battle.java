@@ -2,6 +2,7 @@ package com.sadgel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.security.PublicKey;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -88,6 +89,11 @@ public class SB_battle {
 
         setShoot(bw, 5, 5);
 
+        bw.setOurTern(true);
+
 
     }
+
+
 }
+

@@ -79,6 +79,8 @@ public class SB_menu {
         public void actionPerformed(ActionEvent e) {
 
             bw.setGameBegin(true);
+            Thread t1 = new Thread(new SB_enemy(bw));
+            t1.start();
             Set_buttHide(bw,true);
 
 

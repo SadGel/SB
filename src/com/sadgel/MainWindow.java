@@ -20,9 +20,7 @@ public class MainWindow extends JFrame {
 
         this.ourTern = ourTern;
 
-        if (!ourTern) {
-            SB_battle.enemyTurn(this);
-        }
+
 
     }
 
