@@ -146,11 +146,13 @@ public class Bat_cell {
         //public void mouseClicked(MouseEvent e) {
         public void mouseClicked(MouseEvent e) {
 
-            if (pressed) return;
-            if (!bf.bw.isOurTern()) return;
+
 
             if (bf.isMy) {
                 if (bf.bw.isGameBegin()) {
+
+                    if (pressed) return;
+                    if (!bf.bw.isOurTern()) return;
 
                 }
                 else {
@@ -177,6 +179,9 @@ public class Bat_cell {
             }
             else {
                 if (bf.bw.isGameBegin()) {
+
+                    if (pressed) return;
+                    if (!bf.bw.isOurTern()) return;
 
                     if (e.getButton() == 1) {
 

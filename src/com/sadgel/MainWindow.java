@@ -13,12 +13,20 @@ public class MainWindow extends JFrame {
     public Bat_Field bf1;
     public Bat_Field bf2;
     public JButton [] menu_but;
+    public JLabel tablo;
     private boolean isGameBegin = false;
     private boolean ourTern;
 
     public void setOurTern(boolean ourTern) {
 
         this.ourTern = ourTern;
+
+        if (ourTern) {
+            tablo.setText("ВАШ ХОД");
+        }else {
+            tablo.setText("ХОД СОПРЕНИКА");
+        }
+
 
 
 
@@ -34,7 +42,7 @@ public class MainWindow extends JFrame {
 
     public void setGameBegin(boolean gameBegin) {
         isGameBegin = gameBegin;
-        ourTern = true;
+        setOurTern(true);
 
     }
 

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
+import java.awt.Font;
 
 /**
  * Created by User15 on 30.05.2017.
@@ -48,6 +49,15 @@ public class SB_menu {
         StartButton.addActionListener(actionListenerStart);
         baseWin.getContentPane().add(StartButton);
         bw.menu_but[2] = StartButton;
+
+
+        JLabel label = new JLabel();
+        label.setLocation(150, 5);
+        label.setSize(200, 45);
+        label.setFont(new Font("Serif", Font.PLAIN, 20));
+        label.setText("Установите корабли..");
+        bw.tablo = label;
+        baseWin.getContentPane().add(label);
 
 
 

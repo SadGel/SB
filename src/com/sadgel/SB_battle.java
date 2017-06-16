@@ -1,15 +1,14 @@
 package com.sadgel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.security.PublicKey;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by User15 on 09.06.2017.
  */
 public class SB_battle {
-
 
 
     private static void shooting(Bat_cell bc, boolean izVne) {
@@ -34,33 +33,35 @@ public class SB_battle {
 
             bc.bf.bw.setOurTern(true);
 
-        }
-        else {
+        } else {
 
             if (bc.isDeck()) {
                 //bc.Butt.set("X");
 
 
-                ImageIcon icon = new ImageIcon("cross20.png");
-
-
-               //bc.Butt.setOpaque(false);
+                //ImageIcon icon = new ImageIcon("res/cross20.png");
+                Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/cross20.png")).getImage();
+                ImageIcon icon = new ImageIcon(img);
+                //bc.Butt.setOpaque(false);
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
 
                 bc.Butt.setEnabled(false);
                 bc.Butt.repaint();
 
-            }
-            else {
-                ImageIcon icon = new ImageIcon("dot20.png");
+            } else {
+                //ImageIcon icon = new ImageIcon("res/dot20.png");
+
+                Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/dot20.png")).getImage();
+                ImageIcon icon = new ImageIcon(img);
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
+
 
                 bc.Butt.setEnabled(false);
 
                 //bc.Butt.setOpaque(false);
-               bc.Butt.repaint();
+                bc.Butt.repaint();
 
                 bc.bf.bw.setOurTern(false);
 
@@ -75,8 +76,7 @@ public class SB_battle {
 
             shooting(bw.bf2.arOur[x][y], false);
 
-        }
-        else {
+        } else {
 
             shooting(bw.bf1.arOur[x][y], true);
 
