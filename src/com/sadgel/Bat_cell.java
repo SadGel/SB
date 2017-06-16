@@ -188,7 +188,7 @@ public class Bat_cell {
                         //Set_ships.moveShip(Bat_cell.this);
                         //System.out.println("132");
 
-                        pressed = true;
+                        //pressed = true;
                         SB_battle.setShoot(bf.bw, getX(),getY());
 
                     }
