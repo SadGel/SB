@@ -17,7 +17,7 @@ public class SB_battle {
         bc.pressed = true;
 
         if (izVne) {
-            Color Bg = new Color(255, 0, 0);
+            Color Bg = new Color(0, 255, 0);
             Color BgSt = new Color(255, 255, 0);
 
 
@@ -26,7 +26,7 @@ public class SB_battle {
                 //bc.Butt.setEnabled(false);
                 bc.Butt.setBackground(Bg);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(0);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class SB_battle {
                 bc.Butt.setBackground(BgSt);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(0);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
