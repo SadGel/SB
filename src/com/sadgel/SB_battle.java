@@ -22,11 +22,11 @@ public class SB_battle {
 
 
             for (int i = 1; i <= 3; i++) {
-                System.out.println(13);
+                //System.out.println(13);
                 //bc.Butt.setEnabled(false);
                 bc.Butt.setBackground(Bg);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(0);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class SB_battle {
                 bc.Butt.setBackground(BgSt);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(0);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
@@ -110,7 +110,9 @@ public class SB_battle {
 
     public static void enemyTurn(MainWindow bw) {
 
-        setShoot(bw, 5, 5);
+        int[] rez = SB_enemy.AI_enemy(bw.bf1);
+
+        setShoot(bw, rez[0], rez[1]);
 
         //bw.setOurTern(true);
 
