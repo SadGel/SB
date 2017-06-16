@@ -17,11 +17,11 @@ public class SB_enemy implements Runnable {
     @Override
     public void run() {
         while (bw.isGameBegin()) {
-            try {
-                TimeUnit.SECONDS.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            //try {
+            //    TimeUnit.SECONDS.sleep(5);
+            //} catch (InterruptedException e) {
+            //    e.printStackTrace();
+            //}
 
             if (!bw.isOurTern()) {
                 SB_battle.enemyTurn(bw);

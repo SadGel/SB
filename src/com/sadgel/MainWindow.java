@@ -52,7 +52,7 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
 
-        super("Морской бой 2.1");
+        super("Морской бой 2.2");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
 

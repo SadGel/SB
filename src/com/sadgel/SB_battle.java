@@ -3,6 +3,7 @@ package com.sadgel;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,7 +32,7 @@ public class SB_battle {
                 bc.Butt.setBackground(BgSt);
             }
 
-            bc.bf.bw.setOurTern(true);
+            //bc.bf.bw.setOurTern(true);
 
         } else {
 
@@ -49,6 +50,7 @@ public class SB_battle {
                 bc.Butt.setEnabled(false);
                 bc.Butt.repaint();
 
+
             } else {
                 //ImageIcon icon = new ImageIcon("res/dot20.png");
 
@@ -63,7 +65,7 @@ public class SB_battle {
                 //bc.Butt.setOpaque(false);
                 bc.Butt.repaint();
 
-                bc.bf.bw.setOurTern(false);
+                //bc.bf.bw.setOurTern(false);
 
             }
 
@@ -74,7 +76,15 @@ public class SB_battle {
 
         if (bw.isOurTern()) {
 
-            shooting(bw.bf2.arOur[x][y], false);
+            shooting(bw.bf2.arOur[x][y], false); //установка хода
+
+            if (isShipDown(bw.bf2.arOur[x][y])) {  //проверка на уничтожение карабля
+               shipDown(bw.bf2.arOur[x][y]); //уничтожение карабля
+            }
+
+            bw.setOurTern(bw.bf2.arOur[x][y].isDeck()); //проверка на передачу хода
+
+            
 
         } else {
 
@@ -90,6 +100,107 @@ public class SB_battle {
         setShoot(bw, 5, 5);
 
         bw.setOurTern(true);
+
+
+    }
+
+    public static boolean isShipDown(Bat_cell bc) {
+
+        Iterator<Bat_cell> iterator = bc.ship.iterator();
+
+        while (iterator.hasNext()) {
+            if (!iterator.next().pressed) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    public static void shipDown(Bat_cell bc) {
+        int dx, dy, x, y;
+        Iterator<Bat_cell> iterator = bc.ship.iterator();
+
+        while (iterator.hasNext()) {
+            Bat_cell bt = iterator.next();
+
+                x = bt.getX();
+                y = bt.getY();
+
+                dx = x + 1;
+                dy = y;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    //bt.bf.arOur[dx][dy].setShield(true);
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x - 1;
+                dy = y;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x + 1;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x + 1;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x - 1;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+                dx = x - 1;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bt.bf.arOur[dx][dy].pressed)
+                    shooting(bt.bf.arOur[dx][dy], false);
+                }
+
+
+
+
+
+
+
+
+
+
+        }
 
 
     }
