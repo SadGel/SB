@@ -32,6 +32,16 @@ public class SB_enemy implements Runnable {
         }
     }
 
+    private static Bat_cell[] isInjured(Bat_Field bf) {
+        Bat_cell[] rez = new Bat_cell[3];
+
+
+
+        return rez;
+
+    }
+
+
     public static int[] AI_enemy(Bat_Field bf) {
 
         int[] rez = new int[2];
