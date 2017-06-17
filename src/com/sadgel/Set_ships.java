@@ -170,6 +170,7 @@ public class Set_ships {
 
         while (!setShipRandom(4, bf)) ;
 
+
         while (!setShipRandom(3, bf)) ;
         while (!setShipRandom(3, bf)) ;
 

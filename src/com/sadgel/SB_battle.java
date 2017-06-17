@@ -26,7 +26,7 @@ public class SB_battle {
                 //bc.Butt.setEnabled(false);
                 bc.Butt.setBackground(Bg);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(0);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class SB_battle {
                 bc.Butt.setBackground(BgSt);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(0);
                 } catch (InterruptedException e) {
                     // e.printStackTrace();
                 }
