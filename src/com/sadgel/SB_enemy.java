@@ -20,16 +20,17 @@ public class SB_enemy implements Runnable {
 
         boolean rez;
 
-        try {
-           TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
         System.out.println(bw.isGameBegin());
+        //while (bw.isGameBegin()) {
+        //
         while (bw.isGameBegin()) {
-            //System.out.println(bw.isGameBegin());
-
+        //System.out.println(bw.isGameBegin());
+            try {TimeUnit.SECONDS.sleep(1);
+             } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             rez = !bw.isOurTern();
 
