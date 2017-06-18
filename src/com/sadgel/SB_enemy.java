@@ -17,14 +17,23 @@ public class SB_enemy implements Runnable {
 
     @Override
     public void run() {
-        while (bw.isGameBegin()) {
-            //try {
-            //    TimeUnit.SECONDS.sleep(5);
-            //} catch (InterruptedException e) {
-            //    e.printStackTrace();
-            //}
 
-            if (!bw.isOurTern()) {
+        boolean rez;
+
+        try {
+           TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(bw.isGameBegin());
+        while (bw.isGameBegin()) {
+            //System.out.println(bw.isGameBegin());
+
+
+            rez = !bw.isOurTern();
+
+            if (rez) {
                 System.out.println("work1");
                 SB_battle.enemyTurn(bw);
                 System.out.println("work2");
