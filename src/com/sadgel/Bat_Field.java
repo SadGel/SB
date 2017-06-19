@@ -2,10 +2,6 @@ package com.sadgel;
 
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -66,9 +62,6 @@ public class Bat_Field {
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
                 Bat_cell bt = new Bat_cell(baseWin, x, y, xp, yp, arOur, this);
-                //arOur[x][y] = bt;
-                //bt.arOur[x][y] = bt;
-                //arOur[x][y].setColorBg(1);
             }
 
 
@@ -83,45 +76,7 @@ public class Bat_Field {
 
         baseWin.getContentPane().add(label);
 
-        baseWin.addMouseListener(new CustomListener());
 
-
-
-
-    }
-
-    public void setNote() {
-
-    }
-
-
-
-    public class CustomListener implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
     }
 
 

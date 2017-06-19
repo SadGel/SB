@@ -3,7 +3,6 @@ package com.sadgel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.security.PublicKey;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,7 +48,6 @@ public class Bat_cell {
         ship = new HashSet();
 
         Butt.setFocusPainted(false);
-        //Butt.setFont(new Font("Arial", Font.PLAIN, ));
 
         MainWindow.getContentPane().add(Butt);
 
@@ -140,7 +138,6 @@ public class Bat_cell {
     public class CustomListener implements MouseListener {
 
 
-        //public void mouseClicked(MouseEvent e) {
         public void mouseClicked(MouseEvent e) {
 
 
@@ -155,8 +152,6 @@ public class Bat_cell {
                     JButton button = (JButton) e.getSource();
                     if (e.getButton() == 3) {
                         if (isDeck()) {
-
-                            //System.out.println(Bat_cell.this.ship.size());
 
                             Set_ships.rotateShip(Bat_cell.this);
                         }
@@ -178,13 +173,8 @@ public class Bat_cell {
                     if (!bf.bw.isOurTern()) return;
 
                     if (e.getButton() == 1) {
-
-                        //Set_ships.moveShip(Bat_cell.this);
-                        //System.out.println("132");
-
                         //pressed = true;
                         SB_battle.setShoot(bf.bw, getX(), getY());
-
                     }
 
                 } else {
@@ -194,41 +184,25 @@ public class Bat_cell {
 
             }
 
-            //String text = "<html><b>" + button.getText()
-            //        + " mouseReleased() <br>" + button.getText()
-            //        + " mouseClicked() </b><html>";
-            //eventLabel.setText(text);
         }
 
         public void mouseEntered(MouseEvent e) {
-            //JButton button = (JButton) e.getSource();
-            //setDeck(1);
             bf.setX(x);
             bf.setY(y);
             bf.setTextLabel("X: " + x + " Y: " + y);
-            //setColorBgOver(1, 4, SB_gen.vertal, x, y);
-            //eventLabel.setText(button.getText() + " mouseEntered()");
         }
 
         public void mouseExited(MouseEvent e) {
-            //JButton button = (JButton) e.getSource();
-            //setDeck(0);
             bf.setTextLabel("");
 
-            //setColorBgOver(2, 4, SB_gen.vertal, x, y);
-            //eventLabel.setText(button.getText() + " mouseExited()");
         }
 
         public void mousePressed(MouseEvent e) {
             JButton button = (JButton) e.getSource();
-            //System.out.println(getX() + " " + getY());
-            //eventLabel.setText(button.getText() + " mousePressed()");
         }
 
         public void mouseReleased(MouseEvent e) {
             JButton button = (JButton) e.getSource();
-            // System.out.println(getX() + " " + getY());
-            //eventLabel.setText(button.getText() + " mouseReleased()");
         }
     }
 
