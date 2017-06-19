@@ -1,5 +1,6 @@
 package com.sadgel;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -37,8 +38,8 @@ public class SB_enemy implements Runnable {
         }
     }
 
-    private static Bat_cell[] isInjured(Bat_Field bf) {
-        Bat_cell[] rez = new Bat_cell[3];
+    private static HashSet isInjured(Bat_Field bf) {
+        HashSet rez = new HashSet();
 
 
 

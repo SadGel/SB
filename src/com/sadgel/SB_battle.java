@@ -19,7 +19,7 @@ public class SB_battle {
             Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/aim20.png")).getImage();
             ImageIcon icon = new ImageIcon(img);
 
-            for (int i = 1; i <= 3; i++) {
+            for (int i = 1; i <= 2; i++) {
 
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
@@ -31,7 +31,7 @@ public class SB_battle {
                 bc.Butt.setDisabledIcon(null);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(300);
                 } catch (InterruptedException e) {
                 }
             }
