@@ -14,8 +14,8 @@ public class MainWindow extends JFrame {
     public Bat_Field bf2;
     public JButton [] menu_but;
     public JLabel tablo;
-    private boolean isGameBegin = false;
-    private boolean ourTern;
+    volatile private boolean isGameBegin = false;
+    volatile private boolean ourTern;
 
     public void setOurTern(boolean ourTern) {
 
@@ -32,7 +32,7 @@ public class MainWindow extends JFrame {
 
     }
 
-    public boolean isOurTern() {
+     public boolean isOurTern() {
         return ourTern;
     }
 
