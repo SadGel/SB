@@ -94,45 +94,16 @@ public class Bat_cell {
                 Bg = new Color(255, 0, 255);
             }
 
-            //this.full = true;
             this.deck = true;
         } else {
             Bg = new Color(255, 255, 255);
-            //this.full = false;
             this.deck = false;
-            //this.ship.clear();
         }
         this.colorBg = Bg;
 
         Butt.setBackground(colorBg);
     }
 
-    public void setColorBgOver2(int c, int p, boolean vert, int x, int y) {
-
-        Color Bg;
-        if (c == 1) Bg = new Color(255, 0, 0);
-        else Bg = new Color(255, 255, 255);
-
-        if (vert) {
-            for (int i = 1; i < p; i++) {
-                int resy = y + i;
-                if (resy > 10) resy = resy - p;
-                if (resy < 1) resy = resy + p;
-                arOur2[x][resy].setDeck(c);
-            }
-        } else {
-
-            for (int i = 1; i < p; i++) {
-                int resy = x + i;
-                if (resy > 10) resy = resy - p;
-                if (resy < 1) resy = resy + p;
-                arOur2[resy][y].setDeck(c);
-            }
-
-        }
-
-
-    }
 
 
     public class CustomListener implements MouseListener {
@@ -173,7 +144,6 @@ public class Bat_cell {
                     if (!bf.bw.isOurTern()) return;
 
                     if (e.getButton() == 1) {
-                        //pressed = true;
                         SB_battle.setShoot(bf.bw, getX(), getY());
                     }
 

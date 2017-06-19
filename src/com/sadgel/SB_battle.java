@@ -1,6 +1,5 @@
 package com.sadgel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
@@ -101,7 +100,6 @@ public class SB_battle {
 
         setShoot(bw, rez[0], rez[1]);
 
-        //bw.setOurTern(true);
 
 
     }
@@ -133,7 +131,6 @@ public class SB_battle {
             dy = y;
 
             if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
-                //bt.bf.arOur[dx][dy].setShield(true);
                 if (!bt.bf.arOur[dx][dy].pressed)
                     shooting(bt.bf.arOur[dx][dy], false);
             }
