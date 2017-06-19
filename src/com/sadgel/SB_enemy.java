@@ -1,7 +1,9 @@
 package com.sadgel;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,7 +42,41 @@ public class SB_enemy implements Runnable {
 
     private static HashSet isInjured(Bat_Field bf) {
         HashSet rez = new HashSet();
+        boolean inj = false;
+        //HashSet[] ships = {};
 
+        //Iterator<Set> iterator = new bf.ships.iterator();
+        System.out.println(bf.ships.size());
+
+        Iterator iterator = bf.ships.iterator();
+        while (iterator.hasNext()) {
+            Set ship = (Set) iterator.next();
+            inj = false;
+            Bat_cell[] shipAr =  (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+            boolean tempPressed = shipAr[0].pressed;
+
+            for (Bat_cell elem :shipAr) {
+
+                if (elem.pressed != tempPressed) {
+                    inj = true;
+                }
+
+            }
+
+            if (inj) {
+                System.out.println(shipAr.length);
+            }
+
+            //System.out.println(shipAr.length);
+
+            //Iterator iteratorShip = ship.iterator();
+            //while (iteratorShip.hasNext()) {
+
+            //    Bat_cell bt = (Bat_cell) iteratorShip.next();
+
+
+            //}
+        }
 
 
         return rez;
@@ -50,8 +86,12 @@ public class SB_enemy implements Runnable {
 
     public static int[] AI_enemy(Bat_Field bf) {
 
+        isInjured(bf);
+
         int[] rez = new int[2];
         Random random = new Random();
+
+
 
         rez[0] = random.nextInt(10)+1;
         rez[1] = random.nextInt(10)+1;

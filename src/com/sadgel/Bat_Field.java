@@ -18,6 +18,8 @@ public class Bat_Field {
 
     public Set ships = new HashSet();
 
+    //public Set[] ships = new Set[10];
+
     public boolean shipIsTaken;
 
     public ArrayList<Bat_cell> takenShip;
