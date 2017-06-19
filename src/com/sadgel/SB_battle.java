@@ -17,38 +17,30 @@ public class SB_battle {
         bc.pressed = true;
 
         if (izVne) {
-            Color Bg = new Color(0, 255, 0);
-            Color BgSt = new Color(255, 255, 0);
-
+            Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/aim20.png")).getImage();
+            ImageIcon icon = new ImageIcon(img);
 
             for (int i = 1; i <= 3; i++) {
-                //System.out.println(13);
-                //bc.Butt.setEnabled(false);
-                bc.Butt.setBackground(Bg);
+
+                bc.Butt.setIcon(icon);
+                bc.Butt.setDisabledIcon(icon);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(0);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
-                    // e.printStackTrace();
                 }
-                //bc.Butt.setEnabled(true);
-                bc.Butt.setBackground(BgSt);
+                bc.Butt.setIcon(null);
+                bc.Butt.setDisabledIcon(null);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(0);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
-                    // e.printStackTrace();
                 }
             }
-
-            //bc.bf.bw.setOurTern(true);
 
         }
 
         if (bc.isDeck()) {
-            //bc.Butt.set("X");
 
-
-            //ImageIcon icon = new ImageIcon("res/cross20.png");
             Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/cross20.png")).getImage();
             ImageIcon icon = new ImageIcon(img);
             //bc.Butt.setOpaque(false);
@@ -60,7 +52,6 @@ public class SB_battle {
 
 
         } else {
-            //ImageIcon icon = new ImageIcon("res/dot20.png");
 
             Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/dot20.png")).getImage();
             ImageIcon icon = new ImageIcon(img);
@@ -69,11 +60,7 @@ public class SB_battle {
 
 
             bc.Butt.setEnabled(false);
-
-            //bc.Butt.setOpaque(false);
             bc.Butt.repaint();
-
-            //bc.bf.bw.setOurTern(false);
 
         }
 

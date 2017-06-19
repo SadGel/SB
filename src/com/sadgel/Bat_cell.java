@@ -25,13 +25,12 @@ public class Bat_cell {
     public Set shield;
 
 
-
     public Bat_cell[][] arOur2 = new Bat_cell[11][11];
 
     public Bat_Field bf;
 
 
-    public Bat_cell(JFrame MainWindow, int x, int y, int xp, int yp, Bat_cell[][] arOur,Bat_Field bf) {
+    public Bat_cell(JFrame MainWindow, int x, int y, int xp, int yp, Bat_cell[][] arOur, Bat_Field bf) {
         Color Bg;
 
         MainWindow.setLayout(null);
@@ -93,15 +92,13 @@ public class Bat_cell {
         if (c == 1) {
             if (bf.isMy) {
                 Bg = new Color(255, 0, 0);
-            }
-            else{
+            } else {
                 Bg = new Color(255, 0, 255);
             }
 
             //this.full = true;
             this.deck = true;
-            }
-            else {
+        } else {
             Bg = new Color(255, 255, 255);
             //this.full = false;
             this.deck = false;
@@ -147,15 +144,13 @@ public class Bat_cell {
         public void mouseClicked(MouseEvent e) {
 
 
-
             if (bf.isMy) {
                 if (bf.bw.isGameBegin()) {
 
                     if (pressed) return;
                     if (!bf.bw.isOurTern()) return;
 
-                }
-                else {
+                } else {
 
                     JButton button = (JButton) e.getSource();
                     if (e.getButton() == 3) {
@@ -176,8 +171,7 @@ public class Bat_cell {
 
                 }
 
-            }
-            else {
+            } else {
                 if (bf.bw.isGameBegin()) {
 
                     if (pressed) return;
@@ -189,12 +183,11 @@ public class Bat_cell {
                         //System.out.println("132");
 
                         //pressed = true;
-                        SB_battle.setShoot(bf.bw, getX(),getY());
+                        SB_battle.setShoot(bf.bw, getX(), getY());
 
                     }
 
-                }
-                else {
+                } else {
 
 
                 }
@@ -209,20 +202,20 @@ public class Bat_cell {
 
         public void mouseEntered(MouseEvent e) {
             //JButton button = (JButton) e.getSource();
-           //setDeck(1);
-           bf.setX(x);
+            //setDeck(1);
+            bf.setX(x);
             bf.setY(y);
-           bf.setTextLabel("X: "+x+" Y: "+y);
+            bf.setTextLabel("X: " + x + " Y: " + y);
             //setColorBgOver(1, 4, SB_gen.vertal, x, y);
             //eventLabel.setText(button.getText() + " mouseEntered()");
         }
 
         public void mouseExited(MouseEvent e) {
             //JButton button = (JButton) e.getSource();
-           //setDeck(0);
+            //setDeck(0);
             bf.setTextLabel("");
 
-           //setColorBgOver(2, 4, SB_gen.vertal, x, y);
+            //setColorBgOver(2, 4, SB_gen.vertal, x, y);
             //eventLabel.setText(button.getText() + " mouseExited()");
         }
 
@@ -234,7 +227,7 @@ public class Bat_cell {
 
         public void mouseReleased(MouseEvent e) {
             JButton button = (JButton) e.getSource();
-           // System.out.println(getX() + " " + getY());
+            // System.out.println(getX() + " " + getY());
             //eventLabel.setText(button.getText() + " mouseReleased()");
         }
     }
