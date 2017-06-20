@@ -91,7 +91,7 @@ public class Bat_cell {
             if (bf.isMy) {
                 Bg = new Color(255, 0, 0);
             } else {
-                Bg = new Color(255, 0, 255);
+                Bg = new Color(255, 255, 255); //цвет врага
             }
 
             this.deck = true;
