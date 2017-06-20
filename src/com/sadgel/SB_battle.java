@@ -3,6 +3,7 @@ package com.sadgel;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -196,6 +197,21 @@ public class SB_battle {
 
     }
 
+    public static int getMaxDeckLiveShip(Bat_Field bf) {
+        int rez = 0;
 
+        Iterator iterator = bf.ships.iterator();
+        while (iterator.hasNext()) {
+            Set ship = (Set) iterator.next();
+            Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+            if (!shipAr[0].pressed) {
+                if (rez<ship.size()) rez = ship.size();
+            }
+        }
+
+        System.out.println(rez);
+
+        return rez;
+    }
 }
 

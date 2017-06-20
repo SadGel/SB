@@ -202,22 +202,7 @@ public class SB_enemy implements Runnable {
 
     }
 
-    public static int getMaxDeckLiveShip(Bat_Field bf) {
-        int rez = 0;
 
-        Iterator iterator = bf.ships.iterator();
-        while (iterator.hasNext()) {
-            Set ship = (Set) iterator.next();
-            Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
-            if (!shipAr[0].pressed) {
-                if (rez<ship.size()) rez = ship.size();
-            }
-        }
-
-        System.out.println(rez);
-
-        return rez;
-    }
 
 
     public static Bat_cell[] getTactic(Bat_Field bf, int d) {
@@ -357,7 +342,7 @@ public class SB_enemy implements Runnable {
 
         //тактика
 
-        int d = getMaxDeckLiveShip(bf);
+        int d = SB_battle.getMaxDeckLiveShip(bf);
         if (d > 1) {
             CellsForBitAr = getTactic(bf, d);
 
