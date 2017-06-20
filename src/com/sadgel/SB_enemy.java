@@ -11,26 +11,27 @@ import java.util.concurrent.TimeUnit;
  */
 public class SB_enemy implements Runnable {
     MainWindow bw;
+
     public SB_enemy(MainWindow bw) {
         this.bw = bw;
         {
 
-       }
+        }
     }
 
     @Override
     public void run() {
 
 
-       // System.out.println(bw.isGameBegin());
+        // System.out.println(bw.isGameBegin());
         //while (bw.isGameBegin()) {
         //
         while (bw.isGameBegin()) {
-        //System.out.println(bw.isGameBegin());
+            //System.out.println(bw.isGameBegin());
             //try {TimeUnit.SECONDS.sleep(1);
-             //} catch (InterruptedException e) {
-             //   e.printStackTrace();
-           // }
+            //} catch (InterruptedException e) {
+            //   e.printStackTrace();
+            // }
 
             if (!bw.isOurTern()) {
                 //System.out.println("work1");
@@ -51,9 +52,9 @@ public class SB_enemy implements Runnable {
             BitDecks = new HashSet();
             Set ship = (Set) iterator.next();
             inj = false;
-            Bat_cell[] shipAr =  (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+            Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
             boolean tempPressed = shipAr[0].pressed;
-            for (Bat_cell elem :shipAr) {
+            for (Bat_cell elem : shipAr) {
 
                 if (elem.pressed != tempPressed) {
                     inj = true;
@@ -66,9 +67,8 @@ public class SB_enemy implements Runnable {
             }
 
             if (inj) { //Есть раненый
-                int x,y,dx,dy;
-                Bat_cell[] BitDecksAr =  (Bat_cell[]) BitDecks.toArray(new Bat_cell[BitDecks.size()]);
-                System.out.println(BitDecksAr.length);
+                int x, y, dx, dy;
+                Bat_cell[] BitDecksAr = (Bat_cell[]) BitDecks.toArray(new Bat_cell[BitDecks.size()]);
                 Set CellForBit = new HashSet();
 
                 if (BitDecksAr.length == 1) { // ранена одна палуба
@@ -77,44 +77,48 @@ public class SB_enemy implements Runnable {
                     y = BitDecksAr[0].getY();
 
 
-                    dx = x;dy=y-1; // клетка 1
+                    dx = x;
+                    dy = y - 1; // клетка 1
 
-                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                         if (!bf.arOur[dx][dy].pressed) {
                             CellForBit.add(bf.arOur[dx][dy]);
                         }
                     }
 
-                    dx = x+1;dy=y; // клетка 2
+                    dx = x + 1;
+                    dy = y; // клетка 2
 
-                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                         if (!bf.arOur[dx][dy].pressed) {
                             CellForBit.add(bf.arOur[dx][dy]);
                         }
                     }
 
-                    dx = x;dy=y+1; // клетка 3
+                    dx = x;
+                    dy = y + 1; // клетка 3
 
-                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                         if (!bf.arOur[dx][dy].pressed) {
                             CellForBit.add(bf.arOur[dx][dy]);
                         }
                     }
 
-                    dx = x-1;dy=y; // клетка 4
+                    dx = x - 1;
+                    dy = y; // клетка 4
 
-                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                    if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                         if (!bf.arOur[dx][dy].pressed) {
                             CellForBit.add(bf.arOur[dx][dy]);
                         }
                     }
 
-                    Bat_cell[] CellForBitAr =  (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+                    Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
 
                     return CellForBitAr;
 
 
-                }else { //Ранено больше одной палубы
+                } else { //Ранено больше одной палубы
 
                     int a1 = BitDecksAr[0].getX();
                     int a2 = BitDecksAr[1].getX();
@@ -125,65 +129,64 @@ public class SB_enemy implements Runnable {
                         int dymax = 0;
                         int dymin = 11;
 
-                        for (Bat_cell elem:BitDecksAr) {
-                           int dyTemp = elem.getY();
-                           if (dyTemp >= dymax) dymax = dyTemp;
-                           if (dyTemp <= dymin) dymin = dyTemp;
+                        for (Bat_cell elem : BitDecksAr) {
+                            int dyTemp = elem.getY();
+                            if (dyTemp >= dymax) dymax = dyTemp;
+                            if (dyTemp <= dymin) dymin = dyTemp;
                         }
 
-                        dy=dymin-1; // клетка 1
+                        dy = dymin - 1; // клетка 1
 
-                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                             if (!bf.arOur[dx][dy].pressed) {
                                 CellForBit.add(bf.arOur[dx][dy]);
                             }
                         }
 
-                        dy=dymax+1; // клетка 2
+                        dy = dymax + 1; // клетка 2
 
-                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                             if (!bf.arOur[dx][dy].pressed) {
                                 CellForBit.add(bf.arOur[dx][dy]);
                             }
                         }
 
-                        Bat_cell[] CellForBitAr =  (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+                        Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
 
                         return CellForBitAr;
 
-                    }else{ //Карабль горизонтальный
+                    } else { //Карабль горизонтальный
                         dy = BitDecksAr[0].getY();
                         int dxmax = 0;
                         int dxmin = 11;
 
-                        for (Bat_cell elem:BitDecksAr) {
+                        for (Bat_cell elem : BitDecksAr) {
                             int dxTemp = elem.getX();
                             if (dxTemp >= dxmax) dxmax = dxTemp;
                             if (dxTemp <= dxmin) dxmin = dxTemp;
                         }
 
-                        dx=dxmin-1; // клетка 1
+                        dx = dxmin - 1; // клетка 1
 
-                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                             if (!bf.arOur[dx][dy].pressed) {
                                 CellForBit.add(bf.arOur[dx][dy]);
                             }
                         }
 
-                        dx=dxmax+1; // клетка 2
+                        dx = dxmax + 1; // клетка 2
 
-                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)){
+                        if ((dx <= 10) & (dy <= 10) & (dy >= 1) & (dx >= 1)) {
                             if (!bf.arOur[dx][dy].pressed) {
                                 CellForBit.add(bf.arOur[dx][dy]);
                             }
                         }
 
-                        Bat_cell[] CellForBitAr =  (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+                        Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
 
                         return CellForBitAr;
 
                     }
-
 
 
                 }
@@ -199,7 +202,129 @@ public class SB_enemy implements Runnable {
 
     }
 
-    private static  Bat_cell returnCellForBit(Bat_cell[] CellsForBitAr) {
+    public static int getMaxDeckLiveShip(Bat_Field bf) {
+        int rez = 0;
+
+        Iterator iterator = bf.ships.iterator();
+        while (iterator.hasNext()) {
+            Set ship = (Set) iterator.next();
+            Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+            if (!shipAr[0].pressed) {
+                if (rez<ship.size()) rez = ship.size();
+            }
+        }
+
+        System.out.println(rez);
+
+        return rez;
+    }
+
+
+    public static Bat_cell[] getTactic(Bat_Field bf, int d) {
+        Set possibilShips = new HashSet();
+        Set possibilShipG;
+        Set possibilShipV;
+        int[][] raiting = new int[11][11];
+
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                //добавляем возможные горизонтальные корабли
+                boolean flag = true;
+                possibilShipG = new HashSet();
+                for (int i = 0; i < d; i++) {
+                    if ((x + i <= 10) & (y <= 10) & (y >= 1) & (x + i >= 1)) {
+                        if (bf.arOur[x + i][y].pressed) {
+                            flag = false;
+                            break;
+                        } else {
+                            possibilShipG.add(bf.arOur[x + i][y]);
+                        }
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    possibilShips.add(possibilShipG);
+                }
+                //добавляем возможные горизонтальные корабли
+
+
+                //добавляем возможные вертикальные корабли
+                flag = true;
+                possibilShipV = new HashSet();
+                for (int i = 0; i < d; i++) {
+                    if ((x <= 10) & (y + i <= 10) & (y + i >= 1) & (x >= 1)) {
+                        if (bf.arOur[x][y + i].pressed) {
+                            flag = false;
+                            break;
+                        } else {
+                            possibilShipV.add(bf.arOur[x][y + i]);
+                        }
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    possibilShips.add(possibilShipV);
+                }
+                //добавляем возможные вертикальные корабли
+            }
+        }
+
+        //Сформирован список возможных кораблей
+
+        //формируем рейтинг нахождения кораблей
+        System.out.println(possibilShips.size());
+        int kmax = 0;
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                int k = 0;
+                Iterator iterator = possibilShips.iterator();
+                while (iterator.hasNext()) {
+                    Set ship = (Set) iterator.next();
+                    if (ship.contains(bf.arOur[x][y])) k++;
+                }
+                if (k >= kmax) kmax = k;
+                raiting[x][y] = k;
+            }
+        }
+        //формируем рейтинг нахождения кораблей
+
+
+        //формируем список клеток с максимальным рейтингом
+
+        Set CellForBit = new HashSet();
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                if (raiting[x][y] == kmax) {
+                    CellForBit.add(bf.arOur[x][y]);
+                }
+
+            }
+        }
+
+        Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+
+        //формируем список клеток с максимальным рейтингом
+
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                System.out.print(raiting[x][y] + " ");
+            }
+            System.out.println();
+        }
+
+
+        return CellForBitAr;
+    }
+
+    private static Bat_cell returnCellForBit(Bat_cell[] CellsForBitAr) {
         Bat_cell rez;
 
         Random random = new Random();
@@ -219,6 +344,7 @@ public class SB_enemy implements Runnable {
         // поиск и удар по раненым
         CellsForBitAr = getInjured(bf);
 
+
         if (CellsForBitAr.length > 0) {
 
             CellForBit = returnCellForBit(CellsForBitAr);
@@ -229,18 +355,36 @@ public class SB_enemy implements Runnable {
         // поиск и удар по раненым
 
 
+        //тактика
+
+        int d = getMaxDeckLiveShip(bf);
+        if (d > 1) {
+            CellsForBitAr = getTactic(bf, d);
+
+            if (CellsForBitAr.length > 0) {
+
+                CellForBit = returnCellForBit(CellsForBitAr);
+                rez[0] = CellForBit.getX();
+                rez[1] = CellForBit.getY();
+                return rez;
+            }
+        }
+
+
+        //тактика
+
+
         Random random = new Random();
 
 
-
-        rez[0] = random.nextInt(10)+1;
-        rez[1] = random.nextInt(10)+1;
+        rez[0] = random.nextInt(10) + 1;
+        rez[1] = random.nextInt(10) + 1;
         //System.out.println("x= " + rez[0]);
         //System.out.println("y= " + rez[1]);
         //System.out.println(bf.arOur[rez[0]][rez[1]].pressed);
         while (bf.arOur[rez[0]][rez[1]].pressed) {
-            rez[0] = random.nextInt(10)+1;
-            rez[1] = random.nextInt(10)+1;
+            rez[0] = random.nextInt(10) + 1;
+            rez[1] = random.nextInt(10) + 1;
         }
 
         return rez;
