@@ -216,6 +216,7 @@ public class SB_enemy implements Runnable {
         Bat_cell CellForBit;
         int[] rez = new int[2];
 
+        // поиск и удар по раненым
         CellsForBitAr = getInjured(bf);
 
         if (CellsForBitAr.length > 0) {
@@ -225,6 +226,7 @@ public class SB_enemy implements Runnable {
             rez[1] = CellForBit.getY();
             return rez;
         }
+        // поиск и удар по раненым
 
 
         Random random = new Random();
