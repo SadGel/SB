@@ -120,6 +120,8 @@ public class Bat_cell {
 
                 } else {
 
+                    if (!isDeck() & !bf.shipIsTaken) return; //бага
+
                     JButton button = (JButton) e.getSource();
                     if (e.getButton() == 3) {
                         if (isDeck()) {
@@ -132,6 +134,8 @@ public class Bat_cell {
                     if (e.getButton() == 1) {
 
                         Set_ships.moveShip(Bat_cell.this);
+                        //System.out.println(bf.ships.size());
+
 
                     }
 

@@ -53,6 +53,9 @@ public class SB_enemy implements Runnable {
             Set ship = (Set) iterator.next();
             inj = false;
             Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+
+            System.out.println("s "+ship.size());
+
             boolean tempPressed = shipAr[0].pressed;
             for (Bat_cell elem : shipAr) {
 
@@ -298,8 +301,8 @@ public class SB_enemy implements Runnable {
         //формируем список клеток с максимальным рейтингом
 
 
-        for (int x = 1; x <= 10; x++) {
-            for (int y = 1; y <= 10; y++) {
+        for (int y = 1; y <= 10; y++) {
+            for (int x = 1; x <= 10; x++) {
                 System.out.print(raiting[x][y] + " ");
             }
             System.out.println();

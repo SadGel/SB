@@ -498,6 +498,7 @@ public class Set_ships {
         bt.bf.shipIsTaken = false;
         bt.bf.takenShip.clear();
         setShip(tempDecks, bt.bf);
+
         //Вернуть корабль на место если не удалось поставить его
     }
     //перетаскивание караблей
