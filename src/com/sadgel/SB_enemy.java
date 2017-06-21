@@ -54,7 +54,6 @@ public class SB_enemy implements Runnable {
             inj = false;
             Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
 
-            System.out.println("s "+ship.size());
 
             boolean tempPressed = shipAr[0].pressed;
             for (Bat_cell elem : shipAr) {
@@ -266,7 +265,7 @@ public class SB_enemy implements Runnable {
         //Сформирован список возможных кораблей
 
         //формируем рейтинг нахождения кораблей
-        System.out.println(possibilShips.size());
+        System.out.println("Вариантов установки: "+possibilShips.size());
         int kmax = 0;
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
@@ -343,10 +342,13 @@ public class SB_enemy implements Runnable {
         // поиск и удар по раненым
 
 
-        //тактика
+        //тактика поиска 4х 3х и 2х палубников
 
         int d = SB_battle.getMaxDeckLiveShip(bf);
         if (d > 1) {
+
+            System.out.println("Ищем "+ d+"х палубники");
+
             CellsForBitAr = getTactic(bf, d);
 
             if (CellsForBitAr.length > 0) {
@@ -359,21 +361,24 @@ public class SB_enemy implements Runnable {
         }
 
 
-        //тактика
+        //тактика поиска 4х 3х и 2х палубников
 
+        //остались однопалубники
+
+        System.out.println("Ищем 1о палубники");
 
         Random random = new Random();
 
 
         rez[0] = random.nextInt(10) + 1;
         rez[1] = random.nextInt(10) + 1;
-        //System.out.println("x= " + rez[0]);
-        //System.out.println("y= " + rez[1]);
-        //System.out.println(bf.arOur[rez[0]][rez[1]].pressed);
+
         while (bf.arOur[rez[0]][rez[1]].pressed) {
             rez[0] = random.nextInt(10) + 1;
             rez[1] = random.nextInt(10) + 1;
         }
+
+        //остались однопалубники
 
         return rez;
     }

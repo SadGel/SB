@@ -194,7 +194,24 @@ public class SB_battle {
 
         }
 
+        isBattleEnds(bc);
 
+
+    }
+
+    public static boolean isBattleEnds(Bat_cell bc) {
+        boolean rez = false;
+        if (getMaxDeckLiveShip(bc.bf) == 0) {
+           if (bc.bf.isMy) {
+               System.out.println("Вы проиграли!");
+           }else {
+               //bc.bf.bw.
+               System.out.println("Вы выиграли!");
+           }
+           rez = true;
+        }
+
+        return rez;
     }
 
     public static int getMaxDeckLiveShip(Bat_Field bf) {
@@ -208,8 +225,6 @@ public class SB_battle {
                 if (rez<ship.size()) rez = ship.size();
             }
         }
-
-        System.out.println(rez);
 
         return rez;
     }
