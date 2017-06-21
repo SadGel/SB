@@ -297,6 +297,11 @@ public class Set_ships {
                 bf.arOur[x][y].setDeck(0);
                 bf.arOur[x][y].setShield(false);
                 bf.arOur[x][y].ship.clear();
+                bf.arOur[x][y].pressed = false;
+                bf.arOur[x][y].Butt.setIcon(null);
+                bf.arOur[x][y].Butt.setDisabledIcon(null);
+                bf.arOur[x][y].Butt.setEnabled(true);
+                bf.arOur[x][y].Butt.repaint();
             }
         }
 

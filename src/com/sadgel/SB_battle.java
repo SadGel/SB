@@ -21,18 +21,19 @@ public class SB_battle {
             ImageIcon icon = new ImageIcon(img);
 
             for (int i = 1; i <= 2; i++) {
-
+                int timeOut = 500;
+                if (bc.bf.bw.compVsComp) timeOut=0;
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(timeOut);
                 } catch (InterruptedException e) {
                 }
                 bc.Butt.setIcon(null);
                 bc.Butt.setDisabledIcon(null);
 
                 try {
-                    TimeUnit.MILLISECONDS.sleep(300);
+                    TimeUnit.MILLISECONDS.sleep(timeOut);
                 } catch (InterruptedException e) {
                 }
             }
@@ -102,6 +103,13 @@ public class SB_battle {
         setShoot(bw, rez[0], rez[1]);
 
 
+
+    }
+
+    public static void enemyTurn2(MainWindow bw) {
+
+        int[] rez = SB_enemy.AI_enemy2(bw.bf2);
+        setShoot(bw, rez[0], rez[1]);
 
     }
 
@@ -202,13 +210,21 @@ public class SB_battle {
     public static boolean isBattleEnds(Bat_cell bc) {
         boolean rez = false;
         if (getMaxDeckLiveShip(bc.bf) == 0) {
+
+
+
            if (bc.bf.isMy) {
                System.out.println("Вы проиграли!");
+               bc.bf.bw.score1++;
            }else {
                //bc.bf.bw.
                System.out.println("Вы выиграли!");
+               bc.bf.bw.score2++;
            }
            rez = true;
+
+            bc.bf.bw.setGameBegin(false);
+
         }
 
         return rez;

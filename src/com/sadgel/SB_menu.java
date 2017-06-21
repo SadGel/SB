@@ -18,17 +18,9 @@ public class SB_menu {
 
         bw = baseWin;
 
-        bw.menu_but = new JButton[3];
+        bw.menu_but = new JButton[4];
 
-        JButton newGameButton = new JButton();
-        baseWin.setLayout(null);
-        newGameButton.setSize(100, 20);
-        newGameButton.setLocation(x, y + 40);
-        newGameButton.setText("New game");
-        ActionListener actionListener = new NewGameActionListener();
-        newGameButton.addActionListener(actionListener);
-        baseWin.getContentPane().add(newGameButton);
-        bw.menu_but[0] = newGameButton;
+
 
         JButton setShipsButton = new JButton();
         baseWin.setLayout(null);
@@ -49,6 +41,26 @@ public class SB_menu {
         StartButton.addActionListener(actionListenerStart);
         baseWin.getContentPane().add(StartButton);
         bw.menu_but[2] = StartButton;
+
+        JButton StartButtonCvC = new JButton();
+        baseWin.setLayout(null);
+        StartButtonCvC.setSize(100, 20);
+        StartButtonCvC.setLocation(x, y+40);
+        StartButtonCvC.setText("Start C vs C");
+        ActionListener actionListenerStartCvC = new StartActionListenerCvC();
+        StartButtonCvC.addActionListener(actionListenerStartCvC);
+        baseWin.getContentPane().add(StartButtonCvC);
+        bw.menu_but[3] = StartButtonCvC;
+
+        JButton newGameButton = new JButton();
+        baseWin.setLayout(null);
+        newGameButton.setSize(100, 20);
+        newGameButton.setLocation(x, y + 60);
+        newGameButton.setText("New game");
+        ActionListener actionListener = new NewGameActionListener();
+        newGameButton.addActionListener(actionListener);
+        baseWin.getContentPane().add(newGameButton);
+        bw.menu_but[0] = newGameButton;
 
 
         JLabel label = new JLabel();
@@ -85,12 +97,37 @@ public class SB_menu {
         }
     }
 
+    public static void startGame() {
+        bw.setGameBegin(true);
+
+    }
+
     public static class StartActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-            bw.setGameBegin(true);
-            Thread t1 = new Thread(new SB_enemy(bw));
-            t1.start();
+            //bw.setGameBegin(true);
+            //Thread t1 = new Thread(new SB_enemy(bw));
+            //t1.start();
+            bw.compVsComp = false;
+            startGame();
+            bw.t1 = new Thread(new SB_enemy(bw));
+            bw.t1.start();
+            Set_buttHide(bw,true);
+
+
+        }
+    }
+
+    public static class StartActionListenerCvC implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+            //bw.setGameBegin(true);
+            //Thread t1 = new Thread(new SB_enemy(bw));
+            //t1.start();
+            bw.compVsComp = true;
+            startGame();
+            bw.t1 = new Thread(new SB_enemy(bw));
+            bw.t1.start();
             Set_buttHide(bw,true);
 
 
@@ -98,7 +135,7 @@ public class SB_menu {
     }
 
     public static void Set_buttHide(MainWindow baseWin, boolean hide) {
-        for (int i=0;i<=2;i++) {
+        for (int i=0;i<=3;i++) {
             baseWin.menu_but[i].setEnabled(false);
         }
 

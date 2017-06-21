@@ -91,7 +91,9 @@ public class Bat_cell {
             if (bf.isMy) {
                 Bg = new Color(255, 0, 0);
             } else {
-                Bg = new Color(255, 255, 255); //цвет врага
+                int enemyColor = 255;
+                if (bf.bw.compVsComp) enemyColor=0;
+                Bg = new Color(255, enemyColor, 255); //цвет врага
             }
 
             this.deck = true;
