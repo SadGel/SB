@@ -93,6 +93,9 @@ public class SB_menu {
     public static class NewGameActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
+            int rez = (int) JOptionPane.showConfirmDialog(bw, "Вы действительно хотите запустить Multiplayer?", "Подтверждение", JOptionPane.YES_NO_OPTION);
+            if (rez == 1) return;
+
             try {
                 SB_web.newGame(bw);
 
@@ -120,6 +123,9 @@ public class SB_menu {
 
     public static class StartActionListenerCvC implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+
+            int rez = (int) JOptionPane.showConfirmDialog(bw, "Вы действительно хотите запустить C vs С?", "Подтверждение", JOptionPane.YES_NO_OPTION);
+            if (rez == 1) return;
 
             bw.compVsComp = true;
             bw.setGameBegin(true);
