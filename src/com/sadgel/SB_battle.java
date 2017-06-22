@@ -21,8 +21,8 @@ public class SB_battle {
             ImageIcon icon = new ImageIcon(img);
 
             for (int i = 1; i <= 2; i++) {
-                int timeOut = 500;
-                if (bc.bf.bw.compVsComp) timeOut=0;
+                int timeOut = 200;
+                if (bc.bf.bw.compVsComp) timeOut = 0;
                 bc.Butt.setIcon(icon);
                 bc.Butt.setDisabledIcon(icon);
                 try {
@@ -101,7 +101,6 @@ public class SB_battle {
         int[] rez = SB_enemy.AI_enemy(bw.bf1);
 
         setShoot(bw, rez[0], rez[1]);
-
 
 
     }
@@ -212,16 +211,18 @@ public class SB_battle {
         if (isHasALiveDecks(bc.bf) == 0) {
 
 
-
-           if (bc.bf.isMy) {
-               System.out.println("Вы проиграли!");
-               bc.bf.bw.score1++;
-           }else {
-               //bc.bf.bw.
-               System.out.println("Вы выиграли!");
-               bc.bf.bw.score2++;
-           }
-           rez = true;
+            if (bc.bf.isMy) {
+                System.out.println("Вы проиграли!");
+                bc.bf.bw.score1++;
+                if (!bc.bf.bw.compVsComp)SB_menu.Set_buttHide(bc.bf.bw, false);
+            } else {
+                //bc.bf.bw.
+                System.out.println("Вы выиграли!");
+                bc.bf.bw.score2++;
+                if (!bc.bf.bw.compVsComp) SB_menu.Set_buttHide(bc.bf.bw, false);
+            }
+            bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
+            rez = true;
 
             bc.bf.bw.setGameBegin(false);
 
@@ -238,7 +239,7 @@ public class SB_battle {
             Set ship = (Set) iterator.next();
             Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
             if (!shipAr[0].pressed) {
-                if (rez<ship.size()) rez = ship.size();
+                if (rez < ship.size()) rez = ship.size();
             }
         }
 
@@ -250,7 +251,7 @@ public class SB_battle {
 
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
-                if (bf.arOur[x][y].isDeck()&!bf.arOur[x][y].pressed) rez++;
+                if (bf.arOur[x][y].isDeck() & !bf.arOur[x][y].pressed) rez++;
             }
         }
 

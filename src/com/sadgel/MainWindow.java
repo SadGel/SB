@@ -11,7 +11,7 @@ public class MainWindow extends JFrame {
     public Bat_Field bf1;
     public Bat_Field bf2;
     public JButton [] menu_but;
-    public JLabel tablo;
+    public JLabel tablo, tabloScore;
     public SB_enemy t1;
     public int score1=0,score2=0;
     volatile private boolean isGameBegin = false;
@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
         this.ourTern = ourTern;
         if (compVsComp){
 
-            tablo.setText(score1+" : "+score2);
+            tablo.setText("ИГРАЕТ КОМПЬЮТЕР");
 
         }else {
             if (ourTern) {
@@ -51,11 +51,7 @@ public class MainWindow extends JFrame {
 
 
 
-        if (compVsComp) {
-            Random random = new Random();
-            setOurTern(random.nextBoolean());
 
-        }else setOurTern(false);
 
         if (gameBegin==false&compVsComp) {
             t1.setStop();
@@ -63,6 +59,8 @@ public class MainWindow extends JFrame {
             Set_ships.setAllShips(this.bf1);
             Set_ships.setAllShips(this.bf2);
 
+            Random random = new Random();
+            setOurTern(random.nextBoolean());
 
 
             this.t1 =  new SB_enemy(this);
@@ -73,6 +71,7 @@ public class MainWindow extends JFrame {
             //t1.start();
         }else if(gameBegin==false) t1.setStop();
 
+        if (!compVsComp) setOurTern(false);
 
 
 

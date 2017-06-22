@@ -72,6 +72,15 @@ public class SB_menu {
         baseWin.getContentPane().add(label);
 
 
+        JLabel labelScore = new JLabel();
+        labelScore.setLocation(300, 300);
+        labelScore.setSize(200, 45);
+        labelScore.setFont(new Font("Serif", Font.PLAIN, 40));
+        labelScore.setText("0 : 0");
+        bw.tabloScore = labelScore;
+        baseWin.getContentPane().add(labelScore);
+
+
 
 
     }
@@ -127,7 +136,7 @@ public class SB_menu {
 
     public static void Set_buttHide(MainWindow baseWin, boolean hide) {
         for (int i=0;i<=3;i++) {
-            baseWin.menu_but[i].setEnabled(false);
+            baseWin.menu_but[i].setEnabled(!hide);
         }
 
     }
