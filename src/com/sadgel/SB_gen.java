@@ -21,6 +21,9 @@ public class SB_gen {
         baseWin.addMouseWheelListener(new EventLis());
         baseWin.setVisible(true);
 
+        Set_ships.setAllShips(baseWin.bf1);
+        Set_ships.setAllShips(baseWin.bf2);
+
 
     }
 

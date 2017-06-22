@@ -135,8 +135,6 @@ public class Bat_cell {
                     if (e.getButton() == 1) {
 
                         Set_ships.moveShip(Bat_cell.this);
-                        //System.out.println(bf.ships.size());
-
 
                     }
 

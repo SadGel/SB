@@ -129,11 +129,27 @@ public class SB_battle {
         int dx, dy, x, y;
         Iterator<Bat_cell> iterator = bc.ship.iterator();
 
+        Image img = new ImageIcon(SB_battle.class.getClass().getResource("/res/crossDeth20.png")).getImage();
+        ImageIcon icon = new ImageIcon(img);
+
         while (iterator.hasNext()) {
+
             Bat_cell bt = iterator.next();
+
+            bt.Butt.setIcon(icon);
+            bt.Butt.setDisabledIcon(icon);
+
+            bt.Butt.repaint();
 
             x = bt.getX();
             y = bt.getY();
+
+            //Убрать установку битых клеток при "убит"
+            //if (bc.bf.bw.isOurTern()) {
+            //    x = 200;
+            //    y = 200;
+            //}
+            //Убрать установку битых клеток при "убит"
 
             dx = x + 1;
             dy = y;
@@ -163,6 +179,7 @@ public class SB_battle {
             dy = y - 1;
 
             if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                if (!bt.bf.arOur[dx][dy].pressed)
                 shooting(bt.bf.arOur[dx][dy], false);
             }
 
@@ -197,7 +214,6 @@ public class SB_battle {
                 if (!bt.bf.arOur[dx][dy].pressed)
                     shooting(bt.bf.arOur[dx][dy], false);
             }
-
 
         }
 

@@ -391,7 +391,7 @@ public class SB_enemy implements Runnable {
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
 
-                if (raiting[x][y] != 0) {
+                if (raiting[x][y] != 0) { //Бить в возможную а не максимальновозможную точку
                     CellForBit.add(bf.arOur[x][y]);
                 }
 
@@ -498,7 +498,7 @@ public class SB_enemy implements Runnable {
 
 
         if (CellsForBitAr.length > 0) {
-            //if (CellsForBitAr.length < 0) {
+            //if (CellsForBitAr.length < 0) { //Убрать добивание раненых
 
             CellForBit = returnCellForBit(CellsForBitAr);
             rez[0] = CellForBit.getX();
@@ -511,9 +511,9 @@ public class SB_enemy implements Runnable {
         //тактика поиска 4х 3х и 2х палубников
 
         int d = SB_battle.getMaxDeckLiveShip(bf);
-        //d=1;
+        //d=1; // отключить поиск возможных установок
         if (d > 1) {
-            //if (d == 4) d = 5;
+            //if (d == 4) d = 5; //Выставить начальный поиск на нужное количество палуб
             System.out.println("Ищем " + d + "х палубники");
 
             CellsForBitAr = getTactic(bf, d);
