@@ -10,10 +10,10 @@ public class MainWindow extends JFrame {
 
     public Bat_Field bf1;
     public Bat_Field bf2;
-    public JButton [] menu_but;
+    public JButton[] menu_but;
     public JLabel tablo, tabloScore;
     public SB_enemy t1;
-    public int score1=0,score2=0;
+    public int score1 = 0, score2 = 0;
     volatile private boolean isGameBegin = false;
     volatile private boolean ourTern;
     volatile public boolean compVsComp;
@@ -21,11 +21,11 @@ public class MainWindow extends JFrame {
     public void setOurTern(boolean ourTern) {
 
         this.ourTern = ourTern;
-        if (compVsComp){
+        if (compVsComp) {
 
             tablo.setText("ИГРАЕТ C vs C");
 
-        }else {
+        } else {
             if (ourTern) {
                 tablo.setText("ВАШ ХОД");
             } else {
@@ -34,11 +34,9 @@ public class MainWindow extends JFrame {
         }
 
 
-
-
     }
 
-     public boolean isOurTern() {
+    public boolean isOurTern() {
         return ourTern;
     }
 
@@ -50,10 +48,7 @@ public class MainWindow extends JFrame {
         isGameBegin = gameBegin;
 
 
-
-
-
-        if (gameBegin==false&compVsComp) {
+        if (gameBegin == false & compVsComp) {
             t1.setStop();
             isGameBegin = true;
             Set_ships.setAllShips(this.bf1);
@@ -63,22 +58,18 @@ public class MainWindow extends JFrame {
             setOurTern(random.nextBoolean());
 
 
-            this.t1 =  new SB_enemy(this);
+            this.t1 = new SB_enemy(this);
             Thread t1 = new Thread(this.t1);
             t1.start();
             //SB_enemy.startGameAgain(this);
             //SB_menu.startGame();
             //t1.start();
-        }else if(gameBegin==false) t1.setStop();
+        } else if (gameBegin == false) t1.setStop();
 
         if (!compVsComp) setOurTern(false);
 
 
-
     }
-
-
-
 
 
     public MainWindow() {

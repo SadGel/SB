@@ -22,7 +22,6 @@ public class SB_gen {
         baseWin.setVisible(true);
 
 
-
     }
 
     public static class EventLis implements MouseWheelListener {

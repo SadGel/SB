@@ -215,10 +215,10 @@ public class SB_battle {
                 System.out.println("Вы проиграли!");
                 bc.bf.bw.score1++;
                 bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
-                if (!bc.bf.bw.compVsComp){
+                if (!bc.bf.bw.compVsComp) {
                     SB_menu.Set_buttHide(bc.bf.bw, false);
                     showALive(bc.bf.bw);
-                    JOptionPane.showMessageDialog(bc.bf.bw,"Вы проиграли!");
+                    JOptionPane.showMessageDialog(bc.bf.bw, "Вы проиграли!");
                     Set_ships.setAllShips(bc.bf.bw.bf1);
                     Set_ships.setAllShips(bc.bf.bw.bf2);
                 }
@@ -229,7 +229,7 @@ public class SB_battle {
                 bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
                 if (!bc.bf.bw.compVsComp) {
                     SB_menu.Set_buttHide(bc.bf.bw, false);
-                    JOptionPane.showMessageDialog(bc.bf.bw,"Вы выиграли!");
+                    JOptionPane.showMessageDialog(bc.bf.bw, "Вы выиграли!");
                     Set_ships.setAllShips(bc.bf.bw.bf1);
                     Set_ships.setAllShips(bc.bf.bw.bf2);
                 }
@@ -280,7 +280,6 @@ public class SB_battle {
                 }
             }
         }
-
 
 
     }

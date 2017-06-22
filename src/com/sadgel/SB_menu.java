@@ -14,12 +14,11 @@ public class SB_menu {
     public static MainWindow bw;
     //public static JButton[] menu_but;
 
-    public static void set_butt(MainWindow baseWin,int x,int y) {
+    public static void set_butt(MainWindow baseWin, int x, int y) {
 
         bw = baseWin;
 
         bw.menu_but = new JButton[4];
-
 
 
         JButton setShipsButton = new JButton();
@@ -35,7 +34,7 @@ public class SB_menu {
         JButton StartButton = new JButton();
         baseWin.setLayout(null);
         StartButton.setSize(100, 20);
-        StartButton.setLocation(x, y+20);
+        StartButton.setLocation(x, y + 20);
         StartButton.setText("Start H vs C");
         ActionListener actionListenerStart = new StartActionListener();
         StartButton.addActionListener(actionListenerStart);
@@ -45,7 +44,7 @@ public class SB_menu {
         JButton StartButtonCvC = new JButton();
         baseWin.setLayout(null);
         StartButtonCvC.setSize(100, 20);
-        StartButtonCvC.setLocation(x, y+40);
+        StartButtonCvC.setLocation(x, y + 40);
         StartButtonCvC.setText("Start C vs C");
         ActionListener actionListenerStartCvC = new StartActionListenerCvC();
         StartButtonCvC.addActionListener(actionListenerStartCvC);
@@ -81,8 +80,6 @@ public class SB_menu {
         baseWin.getContentPane().add(labelScore);
 
 
-
-
     }
 
     public static class SetActionListener implements ActionListener {
@@ -99,7 +96,7 @@ public class SB_menu {
             try {
                 SB_web.newGame(bw);
 
-            }catch(MalformedURLException e1) {
+            } catch (MalformedURLException e1) {
                 System.out.println(e1);
             }
 
@@ -107,16 +104,15 @@ public class SB_menu {
     }
 
 
-
     public static class StartActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
             bw.compVsComp = false;
             bw.setGameBegin(true);
-            bw.t1 =  new SB_enemy(bw);
+            bw.t1 = new SB_enemy(bw);
             Thread t1 = new Thread(bw.t1);
             t1.start();
-            Set_buttHide(bw,true);
+            Set_buttHide(bw, true);
 
 
         }
@@ -127,15 +123,15 @@ public class SB_menu {
 
             bw.compVsComp = true;
             bw.setGameBegin(true);
-            bw.t1 =  new SB_enemy(bw);
+            bw.t1 = new SB_enemy(bw);
             Thread t1 = new Thread(bw.t1);
             t1.start();
-            Set_buttHide(bw,true);
+            Set_buttHide(bw, true);
         }
     }
 
     public static void Set_buttHide(MainWindow baseWin, boolean hide) {
-        for (int i=0;i<=3;i++) {
+        for (int i = 0; i <= 3; i++) {
             baseWin.menu_but[i].setEnabled(!hide);
         }
 

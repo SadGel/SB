@@ -12,7 +12,7 @@ public class Bat_Field {
 
     public Bat_cell[][] arOur = new Bat_cell[11][11];
 
-    private int x,y;
+    private int x, y;
 
     private JLabel label;
 
@@ -44,7 +44,7 @@ public class Bat_Field {
         return y;
     }
 
-    public void setTextLabel (String str) {
+    public void setTextLabel(String str) {
 
         this.label.setText(str);
 

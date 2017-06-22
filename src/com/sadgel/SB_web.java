@@ -15,9 +15,8 @@ import java.net.*;
 public class SB_web {
 
 
-
-    public static String newGame(MainWindow bw) throws MalformedURLException{
-        String rez="none";
+    public static String newGame(MainWindow bw) throws MalformedURLException {
+        String rez = "none";
         String username = "gel";
         String password = "258456";
 
@@ -31,18 +30,16 @@ public class SB_web {
         Authenticator.setDefault(myAuth);
 
 
-
-        String pin = (String)JOptionPane.showInputDialog(
+        String pin = (String) JOptionPane.showInputDialog(
                 bw,
                 "Введите pin:",
                 "Ввод pin-кода",
-                JOptionPane.PLAIN_MESSAGE,null
+                JOptionPane.PLAIN_MESSAGE, null
                 ,
                 null,
                 "0000");
 
         if (pin == null) return rez;
-
 
 
         WebSB webSB = new WebSB();
@@ -52,12 +49,9 @@ public class SB_web {
         //System.out.println(pin);
 
 
-
-
         return rez;
 
     }
-
 
 
 }

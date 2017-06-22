@@ -92,7 +92,7 @@ public class Bat_cell {
                 Bg = new Color(0, 250, 200);
             } else {
                 int enemyColor = 255;
-                if (bf.bw.compVsComp) enemyColor=0;
+                if (bf.bw.compVsComp) enemyColor = 0;
                 Bg = new Color(255, enemyColor, 255); //цвет врага
             }
 
@@ -105,7 +105,6 @@ public class Bat_cell {
 
         Butt.setBackground(colorBg);
     }
-
 
 
     public class CustomListener implements MouseListener {

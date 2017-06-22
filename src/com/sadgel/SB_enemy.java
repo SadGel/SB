@@ -26,8 +26,6 @@ public class SB_enemy implements Runnable {
     }
 
 
-
-
     @Override
     public void run() {
 
@@ -36,13 +34,12 @@ public class SB_enemy implements Runnable {
 
             if (!bw.isOurTern()) {
                 SB_battle.enemyTurn(bw);
-            }else if (bw.compVsComp){
+            } else if (bw.compVsComp) {
                 SB_battle.enemyTurn2(bw);
             }
         }
 
     }
-
 
 
     private static Bat_cell[] getInjured(Bat_Field bf) {
@@ -209,8 +206,6 @@ public class SB_enemy implements Runnable {
     }
 
 
-
-
     public static Bat_cell[] getTactic(Bat_Field bf, int d) {
         Set possibilShips = new HashSet();
         Set possibilShipG;
@@ -269,7 +264,7 @@ public class SB_enemy implements Runnable {
         //Сформирован список возможных кораблей
 
         //формируем рейтинг нахождения кораблей
-        System.out.println("Вариантов установки: "+possibilShips.size());
+        System.out.println("Вариантов установки: " + possibilShips.size());
         int kmax = 0;
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
@@ -373,7 +368,7 @@ public class SB_enemy implements Runnable {
         //Сформирован список возможных кораблей
 
         //формируем рейтинг нахождения кораблей
-        System.out.println("Вариантов установки: "+possibilShips.size());
+        System.out.println("Вариантов установки: " + possibilShips.size());
         int kmax = 0;
         for (int x = 1; x <= 10; x++) {
             for (int y = 1; y <= 10; y++) {
@@ -456,7 +451,7 @@ public class SB_enemy implements Runnable {
         int d = SB_battle.getMaxDeckLiveShip(bf);
         if (d > 1) {
 
-            System.out.println("Ищем "+ d+"х палубники");
+            System.out.println("Ищем " + d + "х палубники");
 
             CellsForBitAr = getTactic(bf, d);
 
@@ -503,7 +498,7 @@ public class SB_enemy implements Runnable {
 
 
         if (CellsForBitAr.length > 0) {
-        //if (CellsForBitAr.length < 0) {
+            //if (CellsForBitAr.length < 0) {
 
             CellForBit = returnCellForBit(CellsForBitAr);
             rez[0] = CellForBit.getX();
