@@ -11,57 +11,38 @@ import java.util.concurrent.TimeUnit;
  */
 public class SB_enemy implements Runnable {
     MainWindow bw;
+    Thread th;
+    volatile boolean isStop;
 
     public SB_enemy(MainWindow bw) {
         this.bw = bw;
-        {
+    }
 
+    public void setStop() {
+        isStop = true;
+        if (th != null) {
+            th.interrupt();
         }
     }
+
+
+
 
     @Override
     public void run() {
 
-
-        // System.out.println(bw.isGameBegin());
-        //while (bw.isGameBegin()) {
-        //
-        while (bw.isGameBegin()) {
-            //System.out.println(bw.isGameBegin());
-            //try {TimeUnit.SECONDS.sleep(1);
-            //} catch (InterruptedException e) {
-            //   e.printStackTrace();
-            // }
+        th = Thread.currentThread();
+        while (!isStop) {
 
             if (!bw.isOurTern()) {
-                //System.out.println("work1");
                 SB_battle.enemyTurn(bw);
-                //System.out.println("work2");
-            }else if (bw.compVsComp){
-                SB_battle.enemyTurn2(bw);
-            }
-        }
-    }
-
-    public static void startGameAgain(MainWindow bw) {
-
-        while (bw.isGameBegin()) {
-            //System.out.println(bw.isGameBegin());
-            //try {TimeUnit.SECONDS.sleep(1);
-            //} catch (InterruptedException e) {
-            //   e.printStackTrace();
-            // }
-
-            if (!bw.isOurTern()) {
-                //System.out.println("work1");
-                SB_battle.enemyTurn(bw);
-                //System.out.println("work2");
             }else if (bw.compVsComp){
                 SB_battle.enemyTurn2(bw);
             }
         }
 
     }
+
 
 
     private static Bat_cell[] getInjured(Bat_Field bf) {
@@ -537,7 +518,7 @@ public class SB_enemy implements Runnable {
         int d = SB_battle.getMaxDeckLiveShip(bf);
         //d=1;
         if (d > 1) {
-            //if (d > 2) d = 2;
+            //if (d == 4) d = 5;
             System.out.println("Ищем " + d + "х палубники");
 
             CellsForBitAr = getTactic(bf, d);

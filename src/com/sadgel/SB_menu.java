@@ -97,21 +97,16 @@ public class SB_menu {
         }
     }
 
-    public static void startGame() {
-        bw.setGameBegin(true);
 
-    }
 
     public static class StartActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-            //bw.setGameBegin(true);
-            //Thread t1 = new Thread(new SB_enemy(bw));
-            //t1.start();
             bw.compVsComp = false;
-            startGame();
-            bw.t1 = new Thread(new SB_enemy(bw));
-            bw.t1.start();
+            bw.setGameBegin(true);
+            bw.t1 =  new SB_enemy(bw);
+            Thread t1 = new Thread(bw.t1);
+            t1.start();
             Set_buttHide(bw,true);
 
 
@@ -121,16 +116,12 @@ public class SB_menu {
     public static class StartActionListenerCvC implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-            //bw.setGameBegin(true);
-            //Thread t1 = new Thread(new SB_enemy(bw));
-            //t1.start();
             bw.compVsComp = true;
-            startGame();
-            bw.t1 = new Thread(new SB_enemy(bw));
-            bw.t1.start();
+            bw.setGameBegin(true);
+            bw.t1 =  new SB_enemy(bw);
+            Thread t1 = new Thread(bw.t1);
+            t1.start();
             Set_buttHide(bw,true);
-
-
         }
     }
 

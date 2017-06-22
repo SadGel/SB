@@ -12,7 +12,7 @@ public class MainWindow extends JFrame {
     public Bat_Field bf2;
     public JButton [] menu_but;
     public JLabel tablo;
-    public Thread t1;
+    public SB_enemy t1;
     public int score1=0,score2=0;
     volatile private boolean isGameBegin = false;
     volatile private boolean ourTern;
@@ -48,19 +48,33 @@ public class MainWindow extends JFrame {
 
     public void setGameBegin(boolean gameBegin) {
         isGameBegin = gameBegin;
-        if (gameBegin==false&compVsComp) {
-            //t1.stop();
-            isGameBegin = true;
-            Set_ships.setAllShips(this.bf1);
-            Set_ships.setAllShips(this.bf2);
-            SB_enemy.startGameAgain(this);
-            //SB_menu.startGame();
-            //t1.start();
-        }
+
+
+
         if (compVsComp) {
             Random random = new Random();
             setOurTern(random.nextBoolean());
+
         }else setOurTern(false);
+
+        if (gameBegin==false&compVsComp) {
+            t1.setStop();
+            isGameBegin = true;
+            Set_ships.setAllShips(this.bf1);
+            Set_ships.setAllShips(this.bf2);
+
+
+
+            this.t1 =  new SB_enemy(this);
+            Thread t1 = new Thread(this.t1);
+            t1.start();
+            //SB_enemy.startGameAgain(this);
+            //SB_menu.startGame();
+            //t1.start();
+        }else if(gameBegin==false) t1.setStop();
+
+
+
 
     }
 

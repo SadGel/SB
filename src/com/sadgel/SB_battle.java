@@ -209,7 +209,7 @@ public class SB_battle {
 
     public static boolean isBattleEnds(Bat_cell bc) {
         boolean rez = false;
-        if (getMaxDeckLiveShip(bc.bf) == 0) {
+        if (isHasALiveDecks(bc.bf) == 0) {
 
 
 
@@ -239,6 +239,18 @@ public class SB_battle {
             Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
             if (!shipAr[0].pressed) {
                 if (rez<ship.size()) rez = ship.size();
+            }
+        }
+
+        return rez;
+    }
+
+    public static int isHasALiveDecks(Bat_Field bf) {
+        int rez = 0;
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                if (bf.arOur[x][y].isDeck()&!bf.arOur[x][y].pressed) rez++;
             }
         }
 
