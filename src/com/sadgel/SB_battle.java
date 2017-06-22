@@ -214,17 +214,30 @@ public class SB_battle {
             if (bc.bf.isMy) {
                 System.out.println("Вы проиграли!");
                 bc.bf.bw.score1++;
-                if (!bc.bf.bw.compVsComp)SB_menu.Set_buttHide(bc.bf.bw, false);
+                bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
+                if (!bc.bf.bw.compVsComp){
+                    SB_menu.Set_buttHide(bc.bf.bw, false);
+                    showALive(bc.bf.bw);
+                    JOptionPane.showMessageDialog(bc.bf.bw,"Вы проиграли!");
+                    Set_ships.setAllShips(bc.bf.bw.bf1);
+                    Set_ships.setAllShips(bc.bf.bw.bf2);
+                }
             } else {
                 //bc.bf.bw.
                 System.out.println("Вы выиграли!");
                 bc.bf.bw.score2++;
-                if (!bc.bf.bw.compVsComp) SB_menu.Set_buttHide(bc.bf.bw, false);
+                bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
+                if (!bc.bf.bw.compVsComp) {
+                    SB_menu.Set_buttHide(bc.bf.bw, false);
+                    JOptionPane.showMessageDialog(bc.bf.bw,"Вы выиграли!");
+                    Set_ships.setAllShips(bc.bf.bw.bf1);
+                    Set_ships.setAllShips(bc.bf.bw.bf2);
+                }
             }
-            bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
-            rez = true;
 
             bc.bf.bw.setGameBegin(false);
+
+            rez = true;
 
         }
 
@@ -256,6 +269,20 @@ public class SB_battle {
         }
 
         return rez;
+    }
+
+    public static void showALive(MainWindow bw) {
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                if (bw.bf2.arOur[x][y].isDeck() & !bw.bf2.arOur[x][y].pressed) {
+                    bw.bf2.arOur[x][y].Butt.setBackground(new Color(255, 0, 0));
+                }
+            }
+        }
+
+
+
     }
 }
 

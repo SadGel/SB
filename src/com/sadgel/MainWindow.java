@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
         this.ourTern = ourTern;
         if (compVsComp){
 
-            tablo.setText("ИГРАЕТ КОМПЬЮТЕР");
+            tablo.setText("ИГРАЕТ C vs C");
 
         }else {
             if (ourTern) {
@@ -83,7 +83,7 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
 
-        super("Морской бой 2.4");
+        super("Морской бой 2.5");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
 

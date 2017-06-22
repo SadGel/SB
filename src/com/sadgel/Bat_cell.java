@@ -89,7 +89,7 @@ public class Bat_cell {
         Color Bg;
         if (c == 1) {
             if (bf.isMy) {
-                Bg = new Color(255, 0, 0);
+                Bg = new Color(0, 250, 200);
             } else {
                 int enemyColor = 255;
                 if (bf.bw.compVsComp) enemyColor=0;

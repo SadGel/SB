@@ -36,7 +36,7 @@ public class SB_menu {
         baseWin.setLayout(null);
         StartButton.setSize(100, 20);
         StartButton.setLocation(x, y+20);
-        StartButton.setText("Start");
+        StartButton.setText("Start H vs C");
         ActionListener actionListenerStart = new StartActionListener();
         StartButton.addActionListener(actionListenerStart);
         baseWin.getContentPane().add(StartButton);
@@ -56,7 +56,7 @@ public class SB_menu {
         baseWin.setLayout(null);
         newGameButton.setSize(100, 20);
         newGameButton.setLocation(x, y + 60);
-        newGameButton.setText("New game");
+        newGameButton.setText("Multiplayer");
         ActionListener actionListener = new NewGameActionListener();
         newGameButton.addActionListener(actionListener);
         baseWin.getContentPane().add(newGameButton);
@@ -73,7 +73,7 @@ public class SB_menu {
 
 
         JLabel labelScore = new JLabel();
-        labelScore.setLocation(300, 300);
+        labelScore.setLocation(250, 300);
         labelScore.setSize(200, 45);
         labelScore.setFont(new Font("Serif", Font.PLAIN, 40));
         labelScore.setText("0 : 0");
