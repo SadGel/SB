@@ -73,7 +73,7 @@ public class SB_menu {
 
         JLabel labelScore = new JLabel();
         labelScore.setLocation(250, 300);
-        labelScore.setSize(200, 45);
+        labelScore.setSize(300, 45);
         labelScore.setFont(new Font("Serif", Font.PLAIN, 40));
         labelScore.setText("0 : 0");
         bw.tabloScore = labelScore;

@@ -41,6 +41,39 @@ public class SB_enemy implements Runnable {
 
     }
 
+    private static Bat_cell[] corectInjured(Bat_cell[] cor) {
+        Bat_cell a, b, c;
+        Bat_cell[] rez = new Bat_cell[2];
+        if (cor.length != 3) return cor;
+        else {
+            a = cor[0];
+            b = cor[1];
+            c = cor[2];
+
+            if ((a.getX() == b.getX()) | (a.getY() == b.getY())) {
+                rez[0] = a;
+                rez[1] = b;
+                //rez[0] = c;
+                return rez;
+            }
+
+            if ((a.getX() == c.getX()) | (a.getY() == c.getY())) {
+                rez[0] = a;
+                rez[1] = c;
+                //rez[0] = b;
+                return rez;
+            }
+
+            //if ((b.getX() == c.getX())|(b.getY() == c.getY())) {
+            rez[0] = b;
+            rez[1] = c;
+            //rez[0] = a;
+            return rez;
+            //}
+
+        }
+
+    }
 
     private static Bat_cell[] getInjured(Bat_Field bf) {
 
@@ -414,6 +447,103 @@ public class SB_enemy implements Runnable {
         return CellForBitAr;
     }
 
+    private static Bat_cell[] getOneDeckers(Bat_Field bf) {
+        int[][] raiting = new int[11][11];
+        int kmax = 0;
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                int dx, dy, k = 0;
+
+                if (bf.arOur[x][y].pressed) {
+
+                    raiting[x][y] = -1;
+                    continue;
+
+                } else k++;
+
+                dx = x + 1;
+                dy = y;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x - 1;
+                dy = y;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x + 1;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x + 1;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x - 1;
+                dy = y + 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                dx = x - 1;
+                dy = y - 1;
+
+                if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+                    if (!bf.arOur[dx][dy].pressed) k++;
+                }
+
+                if (k >= kmax) kmax = k;
+                raiting[x][y] = k;
+
+            }
+        }
+
+        //формируем список клеток с максимальным рейтингом
+
+        Set CellForBit = new HashSet();
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                if (raiting[x][y] == kmax) {
+                    CellForBit.add(bf.arOur[x][y]);
+                }
+
+            }
+        }
+
+        Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+
+        //формируем список клеток с максимальным рейтингом
+
+        return CellForBitAr;
+    }
+
 
     private static Bat_cell returnCellForBit(Bat_cell[] CellsForBitAr) {
         Bat_cell rez;
@@ -438,10 +568,12 @@ public class SB_enemy implements Runnable {
 
         if (CellsForBitAr.length > 0) {
 
+            CellsForBitAr = corectInjured(CellsForBitAr);
             CellForBit = returnCellForBit(CellsForBitAr);
             rez[0] = CellForBit.getX();
             rez[1] = CellForBit.getY();
             return rez;
+
         }
         // поиск и удар по раненым
 
@@ -466,6 +598,19 @@ public class SB_enemy implements Runnable {
 
 
         //тактика поиска 4х 3х и 2х палубников
+
+
+        //Тактика поиска однопалубников
+        CellsForBitAr = getOneDeckers(bf);
+
+
+        if (CellsForBitAr.length > 0) {
+
+            CellForBit = returnCellForBit(CellsForBitAr);
+            rez[0] = CellForBit.getX();
+            rez[1] = CellForBit.getY();
+            return rez;
+        }
 
         //остались однопалубники
 
@@ -499,7 +644,7 @@ public class SB_enemy implements Runnable {
 
         if (CellsForBitAr.length > 0) {
             //if (CellsForBitAr.length < 0) { //Убрать добивание раненых
-
+            CellsForBitAr = corectInjured(CellsForBitAr);
             CellForBit = returnCellForBit(CellsForBitAr);
             rez[0] = CellForBit.getX();
             rez[1] = CellForBit.getY();
@@ -529,6 +674,22 @@ public class SB_enemy implements Runnable {
 
 
         //тактика поиска 4х 3х и 2х палубников
+
+        //Тактика поиска однопалубников
+        CellsForBitAr = getOneDeckers(bf);
+
+
+        if (CellsForBitAr.length > 0) {
+
+            CellForBit = returnCellForBit(CellsForBitAr);
+            rez[0] = CellForBit.getX();
+            rez[1] = CellForBit.getY();
+            return rez;
+        }
+
+
+        //Тактика поиска однопалубников
+
 
         //остались однопалубники
 
