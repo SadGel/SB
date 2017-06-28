@@ -631,7 +631,7 @@ public class SB_enemy implements Runnable {
 
         //Тактика поиска однопалубников
         //System.out.println(getNumberOfLiveShips(bf,1));
-        if (getNumberOfLiveShips(bf,1) > 10) { //Если однопалубников больше 1
+        if (getNumberOfLiveShips(bf,1) > 1) { //Если однопалубников больше 1
 
             CellsForBitAr = getOneDeckers(bf);
 
