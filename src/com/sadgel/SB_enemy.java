@@ -447,6 +447,34 @@ public class SB_enemy implements Runnable {
         return CellForBitAr;
     }
 
+    private static int getNumberOfLiveShips(Bat_Field bf, int d) {
+        int rez = 0;
+
+        Iterator iterator = bf.ships.iterator();
+        while (iterator.hasNext()) {
+            Set ship = (Set) iterator.next();
+
+            if (ship.size() != d) continue;
+
+            boolean live = false;
+
+            Bat_cell[] shipAr = (Bat_cell[]) ship.toArray(new Bat_cell[ship.size()]);
+
+            for (Bat_cell elem : shipAr) {
+
+                if (elem.pressed != false) {
+                    live = true;
+                }
+            }
+
+            if (live) rez++;
+
+        }
+
+
+        return rez;
+    }
+
     private static Bat_cell[] getOneDeckers(Bat_Field bf) {
         int[][] raiting = new int[11][11];
         int kmax = 0;
@@ -601,15 +629,17 @@ public class SB_enemy implements Runnable {
 
 
         //Тактика поиска однопалубников
-        CellsForBitAr = getOneDeckers(bf);
+        if (getNumberOfLiveShips(bf,1) > 1) { //Если однопалубников больше 1
+            CellsForBitAr = getOneDeckers(bf);
 
 
-        if (CellsForBitAr.length > 0) {
+            if (CellsForBitAr.length > 0) {
 
-            CellForBit = returnCellForBit(CellsForBitAr);
-            rez[0] = CellForBit.getX();
-            rez[1] = CellForBit.getY();
-            return rez;
+                CellForBit = returnCellForBit(CellsForBitAr);
+                rez[0] = CellForBit.getX();
+                rez[1] = CellForBit.getY();
+                return rez;
+            }
         }
 
         //остались однопалубники
@@ -676,15 +706,19 @@ public class SB_enemy implements Runnable {
         //тактика поиска 4х 3х и 2х палубников
 
         //Тактика поиска однопалубников
-        CellsForBitAr = getOneDeckers(bf);
+        if (getNumberOfLiveShips(bf,1) > 1) { //Если однопалубников больше 1
+
+            CellsForBitAr = getOneDeckers(bf);
 
 
-        if (CellsForBitAr.length > 0) {
+            if (CellsForBitAr.length > 0) {
 
-            CellForBit = returnCellForBit(CellsForBitAr);
-            rez[0] = CellForBit.getX();
-            rez[1] = CellForBit.getY();
-            return rez;
+                CellForBit = returnCellForBit(CellsForBitAr);
+                rez[0] = CellForBit.getX();
+                rez[1] = CellForBit.getY();
+                return rez;
+            }
+
         }
 
 

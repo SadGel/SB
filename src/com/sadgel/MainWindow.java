@@ -61,9 +61,6 @@ public class MainWindow extends JFrame {
             this.t1 = new SB_enemy(this);
             Thread t1 = new Thread(this.t1);
             t1.start();
-            //SB_enemy.startGameAgain(this);
-            //SB_menu.startGame();
-            //t1.start();
         } else if (gameBegin == false) t1.setStop();
 
         if (!compVsComp) setOurTern(false);
@@ -74,7 +71,7 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
 
-        super("Морской бой 2.5");
+        super("Морской бой 2.6");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
 
