@@ -462,7 +462,7 @@ public class SB_enemy implements Runnable {
 
             for (Bat_cell elem : shipAr) {
 
-                if (elem.pressed = false) {
+                if (elem.pressed == false) {
                     live = true;
                     //break;
                 }
