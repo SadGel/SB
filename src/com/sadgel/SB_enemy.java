@@ -462,8 +462,9 @@ public class SB_enemy implements Runnable {
 
             for (Bat_cell elem : shipAr) {
 
-                if (elem.pressed != false) {
+                if (elem.pressed = false) {
                     live = true;
+                    //break;
                 }
             }
 
@@ -629,7 +630,9 @@ public class SB_enemy implements Runnable {
 
 
         //Тактика поиска однопалубников
-        if (getNumberOfLiveShips(bf,1) > 1) { //Если однопалубников больше 1
+        //System.out.println(getNumberOfLiveShips(bf,1));
+        if (getNumberOfLiveShips(bf,1) > 10) { //Если однопалубников больше 1
+
             CellsForBitAr = getOneDeckers(bf);
 
 
@@ -719,7 +722,7 @@ public class SB_enemy implements Runnable {
                 return rez;
             }
 
-        }
+       }
 
 
         //Тактика поиска однопалубников
