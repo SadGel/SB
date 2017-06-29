@@ -645,7 +645,7 @@ public class SB_enemy implements Runnable {
             }
         }
 
-        //остались однопалубники
+        //остался 1 однопалубник
 
         System.out.println("Ищем 1о палубники");
 
@@ -660,7 +660,7 @@ public class SB_enemy implements Runnable {
             rez[1] = random.nextInt(10) + 1;
         }
 
-        //остались однопалубники
+        //остался 1 однопалубник
 
         return rez;
     }
@@ -728,7 +728,7 @@ public class SB_enemy implements Runnable {
         //Тактика поиска однопалубников
 
 
-        //остались однопалубники
+        //остался 1 однопалубник
 
         System.out.println("Ищем 1о палубники");
 
@@ -743,7 +743,7 @@ public class SB_enemy implements Runnable {
             rez[1] = random.nextInt(10) + 1;
         }
 
-        //остались однопалубники
+        //остался 1 однопалубник
 
         return rez;
     }
