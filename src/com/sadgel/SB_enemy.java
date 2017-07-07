@@ -800,7 +800,7 @@ public class SB_enemy implements Runnable {
 
             System.out.println("Ищем " + d + "х палубники");
 
-            CellsForBitAr = getTactic(bf, d);
+            CellsForBitAr = getTactic3(bf, d);
 
             if (CellsForBitAr.length > 0) {
 
