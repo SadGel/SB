@@ -224,6 +224,7 @@ public class SB_battle {
 
     public static boolean isBattleEnds(Bat_cell bc) {
         boolean rez = false;
+        int delta;
         if (isHasALiveDecks(bc.bf) == 0) {
 
 
@@ -231,6 +232,8 @@ public class SB_battle {
                 System.out.println("Вы проиграли!");
                 bc.bf.bw.score1++;
                 bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
+                delta = bc.bf.bw.score1 - bc.bf.bw.score2;
+                bc.bf.bw.tabloDelta.setText(delta+" ");
                 if (!bc.bf.bw.compVsComp) {
                     SB_menu.Set_buttHide(bc.bf.bw, false);
                     showALive(bc.bf.bw);
@@ -243,6 +246,8 @@ public class SB_battle {
                 System.out.println("Вы выиграли!");
                 bc.bf.bw.score2++;
                 bc.bf.bw.tabloScore.setText(bc.bf.bw.score1 + " : " + bc.bf.bw.score2);
+                delta = bc.bf.bw.score1 - bc.bf.bw.score2;
+                bc.bf.bw.tabloDelta.setText(delta+" ");
                 if (!bc.bf.bw.compVsComp) {
                     SB_menu.Set_buttHide(bc.bf.bw, false);
                     JOptionPane.showMessageDialog(bc.bf.bw, "Вы выиграли!");

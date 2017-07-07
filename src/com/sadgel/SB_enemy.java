@@ -238,6 +238,69 @@ public class SB_enemy implements Runnable {
 
     }
 
+    private static int getSummARound(int[][] raiting, int x, int y) {
+        int rez = 0, dx, dy;
+
+        dx = x + 1;
+        dy = y;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy]; //1
+        }
+
+        dx = x - 1;
+        dy = y;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//2
+        }
+
+        dx = x;
+        dy = y + 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//3
+        }
+
+        dx = x;
+        dy = y - 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//4
+        }
+
+        dx = x + 1;
+        dy = y - 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//5
+        }
+
+        dx = x + 1;
+        dy = y + 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//6
+        }
+
+        dx = x - 1;
+        dy = y + 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//7
+        }
+
+        dx = x - 1;
+        dy = y - 1;
+
+        if (!((dx > 10) | (dy > 10) | (dy < 1) | (dx < 1))) {
+            rez = rez + raiting[dx][dy];//8
+        }
+
+
+
+        return rez;
+    }
 
     public static Bat_cell[] getTactic(Bat_Field bf, int d) {
         Set possibilShips = new HashSet();
@@ -342,6 +405,129 @@ public class SB_enemy implements Runnable {
 
         return CellForBitAr;
     }
+
+    public static Bat_cell[] getTactic3(Bat_Field bf, int d) {
+        Set possibilShips = new HashSet();
+        Set possibilShipG;
+        Set possibilShipV;
+        int[][] raiting = new int[11][11];
+        int[][] raiting2 = new int[11][11];
+
+
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                //добавляем возможные горизонтальные корабли
+                boolean flag = true;
+                possibilShipG = new HashSet();
+                for (int i = 0; i < d; i++) {
+                    if ((x + i <= 10) & (y <= 10) & (y >= 1) & (x + i >= 1)) {
+                        if (bf.arOur[x + i][y].pressed) {
+                            flag = false;
+                            break;
+                        } else {
+                            possibilShipG.add(bf.arOur[x + i][y]);
+                        }
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    possibilShips.add(possibilShipG);
+                }
+                //добавляем возможные горизонтальные корабли
+
+
+                //добавляем возможные вертикальные корабли
+                flag = true;
+                possibilShipV = new HashSet();
+                for (int i = 0; i < d; i++) {
+                    if ((x <= 10) & (y + i <= 10) & (y + i >= 1) & (x >= 1)) {
+                        if (bf.arOur[x][y + i].pressed) {
+                            flag = false;
+                            break;
+                        } else {
+                            possibilShipV.add(bf.arOur[x][y + i]);
+                        }
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    possibilShips.add(possibilShipV);
+                }
+                //добавляем возможные вертикальные корабли
+            }
+        }
+
+        //Сформирован список возможных кораблей
+
+        //формируем рейтинг нахождения кораблей
+        System.out.println("Вариантов установки: " + possibilShips.size());
+        int kmax = 0;
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+                int k = 0;
+                Iterator iterator = possibilShips.iterator();
+                while (iterator.hasNext()) {
+                    Set ship = (Set) iterator.next();
+                    if (ship.contains(bf.arOur[x][y])) k++;
+                }
+                if (k >= kmax) kmax = k;
+                raiting[x][y] = k;
+            }
+        }
+        //формируем рейтинг нахождения кораблей
+
+        //Формируем массив с суммами окружающих рейтингов
+        int kmin = 100;
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                if (raiting[x][y] == kmax) {
+                    raiting2[x][y] = getSummARound(raiting,x,y);
+                    if (raiting2[x][y] < kmin) kmin = raiting2[x][y];
+                }
+                else {
+                    raiting2[x][y] = -1;
+                }
+
+            }
+        }
+        //Формируем массив с суммами окружающих рейтингов
+
+
+        //формируем список клеток с минимальным окружающим рейтингом
+
+        Set CellForBit = new HashSet();
+        for (int x = 1; x <= 10; x++) {
+            for (int y = 1; y <= 10; y++) {
+
+                if (raiting2[x][y] == kmin) {
+                    CellForBit.add(bf.arOur[x][y]);
+                }
+
+            }
+        }
+
+        Bat_cell[] CellForBitAr = (Bat_cell[]) CellForBit.toArray(new Bat_cell[CellForBit.size()]);
+
+        //формируем список клеток с минимальным окружающим рейтингом
+
+
+        for (int y = 1; y <= 10; y++) {
+            for (int x = 1; x <= 10; x++) {
+                System.out.print(raiting2[x][y] + " ");
+            }
+            System.out.println();
+        }
+
+
+        return CellForBitAr;
+    }
+
 
     public static Bat_cell[] getTactic2(Bat_Field bf, int d) {
         Set possibilShips = new HashSet();
@@ -694,7 +880,7 @@ public class SB_enemy implements Runnable {
             //if (d == 4) d = 5; //Выставить начальный поиск на нужное количество палуб
             System.out.println("Ищем " + d + "х палубники");
 
-            CellsForBitAr = getTactic(bf, d);
+            CellsForBitAr = getTactic3(bf, d);
 
             if (CellsForBitAr.length > 0) {
 

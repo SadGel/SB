@@ -72,12 +72,20 @@ public class SB_menu {
 
 
         JLabel labelScore = new JLabel();
-        labelScore.setLocation(250, 300);
+        labelScore.setLocation(250, 280);
         labelScore.setSize(300, 45);
         labelScore.setFont(new Font("Serif", Font.PLAIN, 40));
         labelScore.setText("0 : 0");
         bw.tabloScore = labelScore;
         baseWin.getContentPane().add(labelScore);
+
+        JLabel deltaScore = new JLabel();
+        deltaScore.setLocation(250, 330);
+        deltaScore.setSize(300, 45);
+        deltaScore.setFont(new Font("Serif", Font.PLAIN, 40));
+        deltaScore.setText("0");
+        bw.tabloDelta = deltaScore;
+        baseWin.getContentPane().add(deltaScore);
 
 
     }

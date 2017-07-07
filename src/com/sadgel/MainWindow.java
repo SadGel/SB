@@ -11,7 +11,7 @@ public class MainWindow extends JFrame {
     public Bat_Field bf1;
     public Bat_Field bf2;
     public JButton[] menu_but;
-    public JLabel tablo, tabloScore;
+    public JLabel tablo, tabloScore, tabloDelta;
     public SB_enemy t1;
     public int score1 = 0, score2 = 0;
     volatile private boolean isGameBegin = false;
@@ -50,17 +50,19 @@ public class MainWindow extends JFrame {
 
         if (gameBegin == false & compVsComp) {
             t1.setStop();
-            isGameBegin = true;
-            Set_ships.setAllShips(this.bf1);
-            Set_ships.setAllShips(this.bf2);
+            if ((score1+score2)<=20000) { //сколько партий сыграть
+                isGameBegin = true;
+                Set_ships.setAllShips(this.bf1);
+                Set_ships.setAllShips(this.bf2);
 
-            Random random = new Random();
-            setOurTern(random.nextBoolean());
+                Random random = new Random();
+                setOurTern(random.nextBoolean());
 
 
-            this.t1 = new SB_enemy(this);
-            Thread t1 = new Thread(this.t1);
-            t1.start();
+                this.t1 = new SB_enemy(this);
+                Thread t1 = new Thread(this.t1);
+                t1.start();
+            }
         } else if (gameBegin == false) t1.setStop();
 
         if (!compVsComp) setOurTern(false);
@@ -71,7 +73,7 @@ public class MainWindow extends JFrame {
 
     public MainWindow() {
 
-        super("Морской бой 2.6");
+        super("Морской бой 2.7");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
 
