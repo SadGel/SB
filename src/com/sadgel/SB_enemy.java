@@ -880,7 +880,7 @@ public class SB_enemy implements Runnable {
             //if (d == 4) d = 5; //Выставить начальный поиск на нужное количество палуб
             System.out.println("Ищем " + d + "х палубники");
 
-            CellsForBitAr = getTactic3(bf, d);
+            CellsForBitAr = getTactic(bf, d);
 
             if (CellsForBitAr.length > 0) {
 
